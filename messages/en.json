@@ -1,0 +1,166 @@
+{
+    "Metadata": {
+        "login": {
+            "title": "Login"
+        },
+        "register": {
+            "title": "Register"
+        },
+        "reset_password": {
+            "title": "Reset Password"
+        },
+        "forgot_password": {
+            "title": "Forgot Password"
+        }
+    },
+    "Validation": {
+        "auth": {
+            "first_name": {
+                "required": "First name is required",
+                "invalid": "Please provide a valid first name"
+            },
+            "last_name": {
+                "required": "Last name is required",
+                "invalid": "Please provide a valid last name"
+            },
+            "email": {
+                "required": "Email is required",
+                "invalid": "Please provide a valid email address"
+            },
+            "password": {
+                "required": "Password is required",
+                "min": "Password must be at least {minLength} characters long",
+                "max": "Password cannot exceed {maxLength} characters",
+                "mismatch": "Passwords do not match"
+            },
+            "phone_number": {
+                "required": "Phone number is required",
+                "invalid": "Please provide a valid phone number",
+                "min": "Phone number must be at least {minLength} digits long",
+                "max": "Phone number cannot exceed {maxLength} digits"
+            },
+            "confirm_password": {
+                "required": "Confirm Password is required",
+                "mismatch": "Passwords do not match"
+            }
+        }
+    },
+    "Auth": {
+        "login": {
+            "title": "Login",
+            "email": "Email",
+            "password": "Password",
+            "no_account": "Don't Have Account ?",
+            "register": "Sign up here!",
+            "forgot_password": "Forgot your password?",
+            "click_here": "Click Here !",
+            "submit": "Login"
+        },
+        "register": {
+            "title": "Register",
+            "first_name": "First Name",
+            "last_name": "Last Name",
+            "email": "Email",
+            "phone_number": "Phone Number",
+            "password": "Password",
+            "confirm_password": "Confirm Password",
+            "terms_and_conditions": "I agree to the Terms and Conditions",
+            "already_registered": "Already have an account?",
+            "login": "Sign in here",
+            "submit": "Register"
+        },
+        "reset_password": {
+            "title": "Reset Password",
+            "email": "Email",
+            "password": "Password",
+            "confirm_password": "Confirm Password",
+            "submit": "Reset Password"
+        },
+        "forgot_password": {
+            "title": "Forgot Password",
+            "email": "Email",
+            "submit": "Continue",
+            "already_registered": "Already have an account?",
+            "login": "Sign in here",
+            "register": "Sign up here!",
+            "check_email": "Verify your email",
+            "no_email_received": " Don’t receive an email?",
+            "resend_email": "Resend New Link",
+            "reset_password_sent": "Thank you, check your email for instructions to reset your password",
+            "no_account": "Don't Have Account ?",
+            "skip": "Skip",
+            "back": "Back to login"
+        }
+    },
+    "Sidebar": {
+        "dashboard": "dashboard",
+        "reports": {
+            "reports": "Reports",
+            "shipping_companies": "Shipping Companies",
+            "city": "City",
+            "expense_reports": "Expense Reports",
+            "revenue_reports": "Revenue Reports",
+            "orders": "Orders",
+            "top_selling_customers": "Top Selling Customers",
+            "merchant_overview": "Merchant Overview",
+            "user_finance": "User Finances",
+            "daily_orders": "Daily Orders",
+            "slow_moving_products": "Slow Moving Products",
+            "marketer_overview": "Marketer Overview",
+            "product_overview": "Product Overview",
+            "confirmation_reports": "Confirmation Reports",
+            "fulfillment_report": "Fulfillment Report"
+        },
+        "finance_management": {
+            "finance_management": "Finance Management",
+            "sales_management": "Sales Management",
+            "shipping_company_management": "Shipping Company Management",
+            "marketer_management": "Marketer Management",
+            "merchant_management": "Merchant Management",
+            "supplier_finance": "Supplier Finances"
+        },
+        "sales": {
+            "sales": "Sales",
+            "order_reviews": "Order Reviews",
+            "return_reviews": "Return Reviews",
+            "manifest_history": "Manifest History",
+            "pickup_report": "Pickup Report",
+            "late_orders": "Late Orders",
+            "settlement_history": "Settlement History",
+            "fulfillment_settlements": "Fulfillment Settlements"
+        },
+        "products": {
+            "products": "Products",
+            "all_products": "All Products",
+            "add_product": "Add Product",
+            "category": "Category",
+            "sizes": "Sizes",
+            "colors": "Colors",
+            "offers": "Offers",
+            "wholesale_products": "Wholesale Products",
+            "exclusive_products": "Exclusive Products"
+        },
+        "inventory": {
+            "inventory": "Inventory",
+            "warehouses": "Warehouses",
+            "product_stock": "Product Stock",
+            "variant_stock": "Variant Stock"
+        },
+        "purchases": {
+            "purchases": "Purchases",
+            "suppliers": "Suppliers",
+            "stock_movement": "Stock Movement"
+        },
+        "finances": {
+            "finance": "Finance",
+            "withdrawal_requests": "Withdrawal Requests",
+            "outgoing": "Outgoing",
+            "incoming": "Incoming",
+            "cash_and_bank_accounts": "Cash and Bank Accounts"
+        }
+    },
+    "HomePage": {
+        "title": "Hello world!",
+        "about": "Go to the about page"
+    }
+}
