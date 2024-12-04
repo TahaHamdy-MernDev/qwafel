@@ -16,7 +16,7 @@ interface changeLocalizationProps {
 }
 
 const ChangeLocalization: React.FC<changeLocalizationProps> = ({
-  className,
+  className ="absolute top-4 ltr:left-4 rtl:right-4",
 }) => {
   const currentLocale = useLocale();
   const router = useRouter();
@@ -29,14 +29,14 @@ const ChangeLocalization: React.FC<changeLocalizationProps> = ({
   };
 
   return (
-    <div className={cn(" absolute top-4 ltr:left-4 rtl:right-4", className)}>
+    <div className={cn(className)}>
       <DropdownMenu>
         <DropdownMenuTrigger className=" p-2 active:outline-none focus-visible:!outline-none focus-visible:border-none active:border-none">
           <span className="flex items-center justify-center gap-1">
-            <Globe />
             <span className="font-semibold">
               {currentLocale === "ar" ? "العربية" : "English"}
-            </span>
+            </span> 
+            <Globe />
           </span>
         </DropdownMenuTrigger>
         <DropdownMenuContent>

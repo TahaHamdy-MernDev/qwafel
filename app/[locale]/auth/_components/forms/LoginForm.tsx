@@ -15,7 +15,7 @@ import Link from "@/components/reusable/Link";
 type LoginFormInput = z.infer<ReturnType<typeof getLoginSchema>>;
 const LoginForm: React.FC = () => {
   // const [login, {isLoading,error}]= useLoginMutation()
-  // const response = await login(formData).unwrap();
+  //
   const t = useTranslations("Auth.login");
   const schema = getRegisterSchema(useTranslations("Validation.auth"));
   const [showPassword, setShowPassword] = React.useState<boolean>(false);
@@ -24,6 +24,7 @@ const LoginForm: React.FC = () => {
   });
   const onSubmit = async (formData: LoginFormInput) => {
     console.log(formData);
+    // const response = await login(formData).unwrap();
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">

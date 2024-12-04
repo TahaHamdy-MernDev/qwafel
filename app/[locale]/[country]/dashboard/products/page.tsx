@@ -1,5 +1,7 @@
+import Tabletest from "./_components/tables/table";
+
 export default function Page() {
     return (
-        <div>proooo</div>
+        <Tabletest/>
     );
 }

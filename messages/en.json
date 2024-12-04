@@ -13,6 +13,9 @@
             "title": "Forgot Password"
         }
     },
+    "global": {
+        "choose": "Choose"
+      },
     "Validation": {
         "auth": {
             "first_name": {
@@ -158,6 +161,28 @@
             "incoming": "Incoming",
             "cash_and_bank_accounts": "Cash and Bank Accounts"
         }
+    },
+    "search": {
+        "search": "Search",
+        "reset": "Reset",
+        "showSearch": "Search",
+        "hideSearch": "Hide"
+    },
+    "Products": {
+        "all_products":"All Products",
+        "code": "Code",
+        "category": "Category",
+        "user_code": "User Code",
+        "status": {
+            "status": "Status",
+            "active": "Active",
+            "inactive": "Inactive"
+        },
+        "date": "Date",
+        "product_name": "product Name",
+        "seller_commission": "Seller Commission",
+        "system_commission": "System Commission",
+        "product_sku": "Product SKU"
     },
     "HomePage": {
         "title": "Hello world!",

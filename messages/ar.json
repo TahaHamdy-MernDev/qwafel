@@ -13,6 +13,9 @@
             "title": "نسيت كلمة المرور"
         }
     },
+    "global": {
+        "choose": "اختر"
+      },
     "Validation": {
         "auth": {
             "first_name": {
@@ -149,7 +152,7 @@
             "suppliers": "الموردين",
             "stock_movement": "حركة المخزون"
         },
-        "finance": {
+        "finances": {
             "finance": "المالية",
             "withdrawal_requests": "طلبات السحب",
             "outgoing": "صادر",
@@ -157,6 +160,28 @@
             "cash_and_bank_accounts": "الحسابات البنكية والخزائن"
         }
     },
+    "Products": {
+        "all_products":"كل المنتجات",
+        "code": "الكود",
+        "category": "القسم",
+        "user_code": "كود المستخدم",
+        "status": {
+            "status": "الحاله",
+            "active": "نشط",
+            "inactive": "غير نشط"
+        },
+        "date": "التاريخ",
+        "product_name": "اسم المنتج",
+        "seller_commission": "ربحية التاجر",
+        "system_commission": "ربحية النظام",
+        "product_sku": "SKU"
+    },
+    "search": {
+        "search": "بحث",
+        "reset": "حذف",
+        "showSearch": "بحث",
+        "hideSearch": "اخفاء"
+      },
     "HomePage": {
         "title": "اهلا!",
         "about": "Go to the about page"

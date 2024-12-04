@@ -1,4 +1,5 @@
-import { AppSidebar } from "@/components/app-sidebar"
+"use client";
+import { AppSidebar } from "@/components/app-sidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,45 +7,49 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
-import { useLocale } from "next-intl"
-import { getLangDir } from "rtl-detect"
-
-export  function  DashboardLayout({children }:{children:React.ReactNode}) {
-    const locale = useLocale()
-    const dir= getLangDir(locale)
-const sidebarDir= dir==="rtl"?"right":"left"
+} from "@/components/ui/sidebar";
+import { useLocale } from "next-intl";
+import { getLangDir } from "rtl-detect";
+import DynamicBreadcrumb from "../breadcrumb";
+import { NavUser } from "../nav-user";
+import ChangeLocalization from "../ChangeLocalization";
+const data = {
+  user: {
+    name: "shadcn",
+    email: "m@example.com",
+    avatar: "/avatars/shadcn.jpg",
+  },
+};
+export function DashboardLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  const locale = useLocale();
+  const dir = getLangDir(locale);
+  const sidebarDir = dir === "rtl" ? "right" : "left";
   return (
-    <SidebarProvider>
-      <AppSidebar side={sidebarDir}/>
-      <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-          <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 h-4" />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
+    // <SidebarProvider className=" container mx-auto">
+    <SidebarProvider className="mx-auto">
+      <AppSidebar side={sidebarDir} className=" !bg-transparent" />
+      <SidebarInset className=" !bg-transparent">
+        <header className="flex  h-16 shrink-0 justify-between items-center border-b bg-white rounded-ml-lg gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-14">
+          <div className="flex items-center justify-between gap-2 container mx-auto p-4">
+            <div className="flex items-center gap-2">
+              <SidebarTrigger className="-ml-1" />
+              {/* <Separator orientation="vertical" className="mr-2 h-4" /> */}
+              {/* <DynamicBreadcrumb role={"admin"} /> */}
+            </div>
+            <ChangeLocalization className=" block"/>
           </div>
+          {/* <NavUser user={data.user} /> */}
         </header>
-       {children}
+        <div className="container mx-auto p-4 overflow-hidden">{children}</div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

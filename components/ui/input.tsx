@@ -46,9 +46,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       if (errorMessage) {
         setIsAccordionOpen(true);
 
-         const timer = setTimeout(() => {
+        const timer = setTimeout(() => {
           if (clearFieldError) {
-            clearFieldError(); 
+            clearFieldError();
           }
           setIsAccordionOpen(false);
         }, 3000);
@@ -58,20 +58,22 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     }, [errorMessage, clearFieldError]);
     return (
       <div className="grid w-full max-w-lg items-center gap-2">
-        <label className="block text-gray-dark md:text-sm lg:text-base font-semibold ltr:pl-1 rtl:pr-1">
-          {label}
-        </label>
+        {label && (
+          <label className="block text-gray-dark md:text-sm lg:text-base font-semibold ltr:pl-1 rtl:pr-1">
+            {label}
+          </label>
+        )}
         <div className=" relative">
           <input
             type={type}
             placeholder={placeholder}
             className={cn(
-              "flex h-12 w-full rounded-md border border-gray  focus-visible:outline-none bg-transparent px-3 py-1 text-base  transition-colors duration-200  file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground  placeholder:text-base disabled:cursor-not-allowed disabled:opacity-50 md:text-sm lg:text-base",
+              "flex h-12 w-full rounded-md border border-primary  focus-visible:outline-none bg-transparent px-3 py-1 text-base  transition-colors duration-200  file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground  placeholder:text-base disabled:cursor-not-allowed disabled:opacity-50 md:text-sm lg:text-base",
               rtlPadding,
               ltrPadding,
-                hasError
+              hasError
                 ? "border-red-600"
-                : " focus:border-input-focus  focus-visible:border-input-focus",
+                : " focus:border-input-focus  focus-visible:border-primary",
               className
             )}
             ref={ref}
@@ -106,9 +108,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           onValueChange={(value) => setIsAccordionOpen(Boolean(value))}
         >
           <AccordionItem value={label as string} className="border-none">
-            <AccordionContent>
-              {errorMessage}
-            </AccordionContent>
+            <AccordionContent>{errorMessage}</AccordionContent>
           </AccordionItem>
         </Accordion>
       </div>

@@ -1,6 +1,6 @@
-import { LayoutDashboard } from "lucide-react";
+import { CircleDollarSign, LayoutDashboard } from "lucide-react";
 import { useTranslations } from "next-intl";
-
+import { AiOutlineProduct } from "react-icons/ai";
 import { GrAnalytics } from "react-icons/gr";
 // const data = {
 //     user: {
@@ -76,67 +76,67 @@ export const sidebarLinks = ({
         },
         {
           title: t("reports.city"),
-          url: "/reports/city",
+          url: "reports/city",
           isVisible: true,
         },
         {
           title: t("reports.expense_reports"),
-          url: "/reports/expense-reports",
+          url: "reports/expense-reports",
           isVisible: true,
         },
         {
           title: t("reports.revenue_reports"),
-          url: "/reports/revenue-reports",
+          url: "reports/revenue-reports",
           isVisible: true,
         },
         {
           title: t("reports.orders"),
-          url: "/reports/orders",
+          url: "reports/orders",
           isVisible: true,
         },
         {
           title: t("reports.top_selling_customers"),
-          url: "/reports/top-selling-customers",
+          url: "reports/top-selling-customers",
           isVisible: true,
         },
         {
           title: t("reports.merchant_overview"),
-          url: "/reports/merchant-overview",
+          url: "reports/merchant-overview",
           isVisible: true,
         },
         {
           title: t("reports.user_finance"),
-          url: "/reports/user-finance",
+          url: "reports/user-finance",
           isVisible: true,
         },
         {
           title: t("reports.daily_orders"),
-          url: "/reports/daily-orders",
+          url: "reports/daily-orders",
           isVisible: true,
         },
         {
           title: t("reports.slow_moving_products"),
-          url: "/reports/slow-moving-products",
+          url: "reports/slow-moving-products",
           isVisible: true,
         },
         {
           title: t("reports.marketer_overview"),
-          url: "/reports/marketer-overview",
+          url: "reports/marketer-overview",
           isVisible: true,
         },
         {
           title: t("reports.product_overview"),
-          url: "/reports/product-overview",
+          url: "reports/product-overview",
           isVisible: true,
         },
         {
           title: t("reports.confirmation_reports"),
-          url: "/reports/confirmation-reports",
+          url: "reports/confirmation-reports",
           isVisible: true,
         },
         {
           title: t("reports.fulfillment_report"),
-          url: "/reports/fulfillment-report",
+          url: "reports/fulfillment-report",
           isVisible: true,
         },
       ],
@@ -144,7 +144,7 @@ export const sidebarLinks = ({
     {
       title: t("finance_management.finance_management"),
       url: "/finance-management",
-      icon: null, // Add an appropriate icon
+      icon: CircleDollarSign, 
       isActive: false,
       isVisible: true,
       items: [
@@ -178,7 +178,7 @@ export const sidebarLinks = ({
     {
       title: t("products.products"),
       url: "/products",
-      icon: null, // Add an appropriate icon
+      icon: AiOutlineProduct,
       isActive: false,
       isVisible: true,
       items: [
@@ -224,6 +224,126 @@ export const sidebarLinks = ({
         },
       ],
     },
+    {
+      title: t("sales.sales"),
+      url: "/sales",
+      icon: CircleDollarSign, 
+      isActive: false,
+      isVisible: true,
+      items: [
+        {
+          title: t("sales.order_reviews"),
+          url: "/sales/order-reviews",
+          isVisible: true,
+        },
+        {
+          title: t("sales.return_reviews"),
+          url: "/sales/return-reviews",
+          isVisible: true,
+        },
+        {
+          title: t("sales.manifest_history"),
+          url: "/sales/manifest-history",
+          isVisible: true,
+        },
+        {
+          title: t("sales.pickup_report"),
+          url: "/sales/pickup-report",
+          isVisible: true,
+        },
+        {
+          title: t("sales.late_orders"),
+          url: "/sales/late-orders",
+          isVisible: true,
+        },
+        {
+          title: t("sales.settlement_history"),
+          url: "/sales/settlement-history",
+          isVisible: true,
+        },
+        {
+          title: t("sales.fulfillment_settlements"),
+          url: "/sales/fulfillment-settlements",
+          isVisible: true,
+        },
+      ],
+    },
+    {
+      title: t("inventory.inventory"),
+      url: "/inventory",
+      icon: CircleDollarSign, // Replace with an appropriate icon
+      isActive: false,
+      isVisible: true,
+      items: [
+        {
+          title: t("inventory.warehouses"),
+          url: "/inventory/warehouses",
+          isVisible: true,
+        },
+        {
+          title: t("inventory.product_stock"),
+          url: "/inventory/product-stock",
+          isVisible: true,
+        },
+        {
+          title: t("inventory.variant_stock"),
+          url: "/inventory/variant-stock",
+          isVisible: true,
+        },
+      ],
+    }
+,
+{
+  title: t("purchases.purchases"),
+  url: "/purchases",
+  icon: CircleDollarSign, // Replace with an appropriate icon
+  isActive: false,
+  isVisible: true,
+  items: [
+    {
+      title: t("purchases.suppliers"),
+      url: "/purchases/suppliers",
+      isVisible: true,
+    },
+    {
+      title: t("purchases.stock_movement"),
+      url: "/purchases/stock-movement",
+      isVisible: true,
+    },
+  ],
+}
+,
+{
+  title: t("finances.finance"),
+  url: "/finances",
+  icon: CircleDollarSign, // Replace with an appropriate icon
+  isActive: false,
+  isVisible: true,
+  items: [
+    {
+      title: t("finances.withdrawal_requests"),
+      url: "/finances/withdrawal-requests",
+      isVisible: true,
+    },
+    {
+      title: t("finances.outgoing"),
+      url: "/finances/outgoing",
+      isVisible: true,
+    },
+    {
+      title: t("finances.incoming"),
+      url: "/finances/incoming",
+      isVisible: true,
+    },
+    {
+      title: t("finances.cash_and_bank_accounts"),
+      url: "/finances/cash-and-bank-accounts",
+      isVisible: true,
+    },
+  ],
+}
+
+    
   ];
 };
 

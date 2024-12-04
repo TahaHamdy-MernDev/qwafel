@@ -5,7 +5,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 html[dir="ltr"] {
-  font-family: "Inter", serif;
+  font-family: "Inter", serif;  
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -20,8 +20,11 @@ html[dir="rtl"] {
 @layer base {
   :root {
     /* #f26f54 */
-    --color-orange-prime: hsl(10, 86%, 64%);
+    --color-orange-prime: 5, 86%, 64%;
+    /* color: hsl(5, 86%, 63%); */
     --color-orange-prime-hover: hsla(10, 86%, 64%, 0.9);
+    --color-orange-sidebar: hsl(9, 62%, 60%);
+    --color-orange-sidebar-hover: hsla(10, 86%, 90%);
     --color-purple-prime: hsl(259, 63%, 59%);
     --color-purple-shade: #f7f8fa;
     --color-purple-bg: #f4f3ff;
@@ -54,7 +57,7 @@ html[dir="rtl"] {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: #4d4a4a00 ;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
@@ -104,7 +107,7 @@ html[dir="rtl"] {
     @apply border-border;
   }
   body {
-    @apply bg-[#f7f8fa] text-gray-dark text-base;
+    @apply bg-gray-100 text-gray-dark text-base;
   }
   svg {
     @apply w-6 h-6 text-gray;
@@ -148,11 +151,17 @@ html[dir="rtl"] {
   transform: rotate(180deg);
   z-index: -1;
 }
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: white;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-orange-prime);
+ 
+  border-radius: 10px;
 }

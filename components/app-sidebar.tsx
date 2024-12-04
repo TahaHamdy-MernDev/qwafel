@@ -28,6 +28,7 @@ import {
 import sidebarLinks from "@/visibility/sidebarLinks"
 import { useTranslations } from "next-intl"
 import { usePathname } from "@/i18n/routing"
+import Image from "./reusable/Image"
 
 // This is sample data.
 const data = {
@@ -162,17 +163,21 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname=  usePathname()
   console.log(pathname)
+  const links= sidebarLinks({role:"admin", t:useTranslations("Sidebar")})
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        {/* <TeamSwitcher teams={data.teams} /> */}
+        <div className="flex justify-center mb-8 mt-8">
+        <Image src="/logo.svg" width={160} height={100} alt="Logo" />
+      </div>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={sidebarLinks({role:"admin", t:useTranslations("Sidebar")})} />
+        <NavMain items={links} />
         {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>
-        {/* <NavUser user={data.user} /> */}
+        <NavUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
