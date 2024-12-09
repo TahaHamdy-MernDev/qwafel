@@ -1,0 +1,212 @@
+{
+    "Metadata": {
+        "login": {
+            "title": "تسجيل الدخول"
+        },
+        "register": {
+            "title": "تسجيل جديد"
+        },
+        "reset_password": {
+            "title": "اعادة تعيين كلمة المرور"
+        },
+        "forgot_password": {
+            "title": "نسيت كلمة المرور"
+        }
+    },
+    "global": {
+        "choose": "اختر",
+        "reset": "ا��ادة تعيين",
+        "submit": "��رسال",
+        "cancel": "��لغا��",
+        "agree": "موافق",
+        "disagree": "غير موافق"
+    },
+    "Validation": {
+        "auth": {
+            "first_name": {
+                "required": "الاسم الأول مطلوب",
+                "invalid": "يرجى تقديم اسم أول صالح"
+            },
+            "last_name": {
+                "required": "اسم العائلة مطلوب",
+                "invalid": "يرجى تقديم اسم عائلة صالح"
+            },
+            "email": {
+                "required": "البريد الإلكتروني مطلوب",
+                "invalid": "يرجى تقديم بريد إلكتروني صالح"
+            },
+            "password": {
+                "required": "كلمة المرور مطلوبة",
+                "min": "يجب أن تكون كلمة المرور {minLength} أحرف على الأقل",
+                "max": "لا يمكن أن تتجاوز كلمة المرور {maxLength} أحرف",
+                "mismatch": "كلمتا المرور غير متطابقتين"
+            },
+            "confirm_password": {
+                "required": "تأكيد كلمة المرور مطلوب",
+                "mismatch": "كلمات المرور غير متطابقة"
+            },
+            "phone_number": {
+                "required": "رقم الهاتف مطلوب",
+                "invalid": "يرجى تقديم رقم هاتف صالح",
+                "min": "يجب أن يتكون رقم الهاتف من {minLength} أرقام على الأقل",
+                "max": "لا يمكن أن يتجاوز رقم الهاتف {maxLength} أرقام"
+            }
+        }
+    },
+    "Auth": {
+        "login": {
+            "title": "تسجيل الدخول",
+            "email": "البريد الالكتروني",
+            "no_account": "ليس لديك حساب ؟",
+            "register": "انشء حساب الان",
+            "forgot_password": "هل نسيت كلمة المرور؟",
+            "click_here": "اضغط هنا",
+            "password": "كلمة المرور",
+            "submit": "تسجيل الدخول"
+        },
+        "register": {
+            "title": "تسجيل جديد",
+            "first_name": "الاسم الأول",
+            "last_name": " اسم العائلة",
+            "email": "البريد الالكتروني",
+            "phone_number": "رقم الهاتف",
+            "password": "كلمة المرور",
+            "already_registered": " هل لديك حساب بالفعل ؟",
+            "login": "سجل الان",
+            "submit": "تسجيل"
+        },
+        "reset_password": {
+            "title": "اعادة تعيين كلمة المرور",
+            "email": "البريد الالكتروني",
+            "password": "كلمة المرور",
+            "confirm_password": "تاكيد كلمة المرور",
+            "submit": "اعادة تعين"
+        },
+        "forgot_password": {
+            "title": "نسيت كلمة المرور",
+            "email": "البريد الالكتروني",
+            "submit": "المتابعه",
+            "check_email": "تحقق من بريدك الإلكتروني",
+            "already_registered": " هل لديك حساب بالفعل ؟",
+            "login": "سجل الان",
+            "register": "انشء حساب الان",
+            "no_email_received": "لم تتلق رسالة بريد إلكتروني؟",
+            "resend_email": "ارسل رابط جديد",
+            "no_account": "ليس لديك حساب ؟",
+            "skip": "تم",
+            "reset_password_sent": "شكراً لك، تحقق من بريدك الإلكتروني للحصول على تعليمات إعادة تعيين كلمة المرور الخاصة بك",
+            "back": "العوده الى تسجيل الدخول "
+        }
+    },
+    "Sidebar": {
+        "dashboard": "لوحة التحكم",
+        "reports": {
+            "reports": "لتقارير",
+            "shipping_companies": "شركات الشحن",
+            "city": "المدينة",
+            "expense_reports": "تقارير النفاقات",
+            "revenue_reports": "تقارير الايرادات",
+            "orders": "الطلبيات",
+            "top_selling_customers": "العملاء الاكثر مبيعا",
+            "merchant_overview": "نظرة على التجار",
+            "user_finance": "ماليات المستخدمين",
+            "daily_orders": "الطلبات اليومية",
+            "slow_moving_products": "المنتجات الركده",
+            "marketer_overview": "نظرة على المسوقين",
+            "product_overview": "نظرة على المنتجات",
+            "confirmation_reports": "تقارير التأكيد",
+            "fulfillment_report": "تقرير فولفيلمنت"
+        },
+        "finance_management": {
+            "finance_management": "ادارة الماليات",
+            "sales_management": "إدارة المبيعات",
+            "shipping_company_management": "إدارة شركات الشحن",
+            "marketer_management": "إدارة المسوقين",
+            "merchant_management": "إدارة التجار",
+            "supplier_finance": "ماليات الموردين"
+        },
+        "sales": {
+            "sales": "المبيعات",
+            "order_reviews": "مراجعة تقفيلات",
+            "return_reviews": "مراجعة المرتجعات",
+            "manifest_history": "تاريخ المانيفيست",
+            "pickup_report": "تقرير البيك اب",
+            "late_orders": "أوردرات متأخرة",
+            "settlement_history": "تاريخ تقفيلات",
+            "fulfillment_settlements": "تقفيلات فولفيلمنت"
+        },
+        "products": {
+            "products": "المنتجات",
+            "all_products": "كل المنتجات",
+            "add_product": "إضافة منتج",
+            "category": "قسم",
+            "sizes": "المقاسات",
+            "colors": "الألوان",
+            "offers": "العروض",
+            "wholesale_products": "منتجات جمله",
+            "exclusive_products": "منتجات حصرية"
+        },
+        "inventory": {
+            "inventory": "المخزون",
+            "warehouses": "المخازن",
+            "product_stock": "مخزون المنتجات",
+            "variant_stock": "مخزون المتغيرات"
+        },
+        "purchases": {
+            "purchases": "المشتريات",
+            "suppliers": "الموردين",
+            "stock_movement": "حركة المخزون"
+        },
+        "finances": {
+            "finance": "المالية",
+            "withdrawal_requests": "طلبات السحب",
+            "outgoing": "صادر",
+            "incoming": "وارد",
+            "cash_and_bank_accounts": "الحسابات البنكية والخزائن"
+        }
+    },
+    "Products": {
+        "add_product": "إضافة منتج",
+        "create_new_product": "انشاء منتج جديد",
+        "title": "اسم المنتج",
+        "thumbnail": "الصورة المصغرة ",
+        "product_images": "صور المنتج",
+        "external_url": "رابط خارجي",
+        "description": "وصف المنتج",
+        "all_products": "كل المنتجات",
+        "create": "انشاء",
+        "code": "الكود",
+        "category": "القسم",
+        "user_code": "كود المستخدم",
+        "status": {
+            "status": "الحاله",
+            "active": "نشط",
+            "inactive": "غير نشط"
+        },
+        "date": "التاريخ",
+        "product_name": "اسم المنتج",
+        "seller_commission": "ربحية التاجر",
+        "system_commission": "ربحية الشركه",
+        "product_sku": "SKU",
+        "column": {
+            "date": "التاريخ",
+            "product": "المنتج",
+            "price": "السعر",
+            "current_stock": "الاستوك الحالي",
+            "seller_commission": "ربحية التاجر",
+            "system_commission": "ربحية الشركه",
+            "seller": "التاجر",
+            "actions": "اجراءات"
+        }
+    },
+    "search": {
+        "search": "بحث",
+        "reset": "حذف",
+        "showSearch": "بحث",
+        "hideSearch": "اخفاء"
+    },
+    "HomePage": {
+        "title": "اهلا!",
+        "about": "Go to the about page"
+    }
+}
