@@ -99,8 +99,8 @@ const AllTable: React.FC = () => {
               <TableHead className="max-w-20">{t("column.product")}</TableHead>
               <TableHead>{t("column.price")}</TableHead>
               <TableHead>{t("column.current_stock")}</TableHead>
-              <TableHead>{t("column.seller_commission")}</TableHead>
-              <TableHead>{t("column.system_commission")}</TableHead>
+              {/* <TableHead>{t("column.seller_commission")}</TableHead> */}
+              {/* <TableHead>{t("column.system_commission")}</TableHead> */}
               <TableHead>{t("status.status")}</TableHead>
               <TableHead>{t("column.seller")}</TableHead>
               <TableHead>{t("column.actions")}</TableHead>
@@ -137,12 +137,12 @@ const AllTable: React.FC = () => {
                 </TableCell>
                 <TableCell>{item.price}</TableCell>
                 <TableCell>{item.currentStock}</TableCell>
-                <TableCell>{item.sellerCommission}</TableCell>
-                <TableCell>{item.systemCommission}</TableCell>
+                {/* <TableCell>{item.sellerCommission}</TableCell> */}
+                {/* <TableCell>{item.systemCommission}</TableCell> */}
                 <TableCell>
                   {/* <Select
             options={status}
-            placeholder={t("status.status")}
+            placeholder={t("status.status")} 
             control={control}
             onValueChange={()=>console.log("tttttt")}
             // {...register("status")} 
