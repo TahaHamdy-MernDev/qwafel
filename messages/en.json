@@ -15,7 +15,7 @@
     },
     "global": {
         "choose": "Choose"
-      },
+    },
     "Validation": {
         "auth": {
             "first_name": {
@@ -169,7 +169,7 @@
         "hideSearch": "Hide"
     },
     "Products": {
-        "all_products":"All Products",
+        "all_products": "All Products",
         "code": "Code",
         "category": "Category",
         "user_code": "User Code",
@@ -182,7 +182,17 @@
         "product_name": "product Name",
         "seller_commission": "Seller Commission",
         "system_commission": "System Commission",
-        "product_sku": "Product SKU"
+        "product_sku": "Product SKU",
+        "column": {
+            "date": "Date",
+            "product": "Product",
+            "price": "Price",
+            "current_stock": "Current Stock",
+            "seller_commission": "Seller Commission",
+            "system_commission": "System Commission",
+            "seller": "Seller",
+            "actions": "Actions"
+        }
     },
     "HomePage": {
         "title": "Hello world!",

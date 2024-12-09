@@ -15,7 +15,7 @@
     },
     "global": {
         "choose": "اختر"
-      },
+    },
     "Validation": {
         "auth": {
             "first_name": {
@@ -161,7 +161,7 @@
         }
     },
     "Products": {
-        "all_products":"كل المنتجات",
+        "all_products": "كل المنتجات",
         "code": "الكود",
         "category": "القسم",
         "user_code": "كود المستخدم",
@@ -173,15 +173,25 @@
         "date": "التاريخ",
         "product_name": "اسم المنتج",
         "seller_commission": "ربحية التاجر",
-        "system_commission": "ربحية النظام",
-        "product_sku": "SKU"
+        "system_commission": "ربحية الشركه",
+        "product_sku": "SKU",
+        "column": {
+            "date": "التاريخ",
+            "product": "المنتج",
+            "price": "السعر",
+            "current_stock": "الاستوك الحالي",
+            "seller_commission": "ربحية التاجر",
+            "system_commission": "ربحية الشركه",
+            "seller": "التاجر",
+            "actions": "اجراءات"
+        }
     },
     "search": {
         "search": "بحث",
         "reset": "حذف",
         "showSearch": "بحث",
         "hideSearch": "اخفاء"
-      },
+    },
     "HomePage": {
         "title": "اهلا!",
         "about": "Go to the about page"

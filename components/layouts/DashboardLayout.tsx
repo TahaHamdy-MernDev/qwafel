@@ -19,6 +19,7 @@ import { getLangDir } from "rtl-detect";
 import DynamicBreadcrumb from "../breadcrumb";
 import { NavUser } from "../nav-user";
 import ChangeLocalization from "../ChangeLocalization";
+import ChangeCountry from "../change-country";
 const data = {
   user: {
     name: "shadcn",
@@ -44,7 +45,11 @@ export function DashboardLayout({
               {/* <Separator orientation="vertical" className="mr-2 h-4" /> */}
               {/* <DynamicBreadcrumb role={"admin"} /> */}
             </div>
+            <div className=" flex items-center justify-center gap-2">
+
+            <ChangeCountry/>
             <ChangeLocalization className=" block"/>
+            </div>
           </div>
           {/* <NavUser user={data.user} /> */}
         </header>

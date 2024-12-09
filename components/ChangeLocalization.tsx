@@ -7,16 +7,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import {  Globe } from "lucide-react";
+import { Globe } from "lucide-react";
 import { useLocale } from "next-intl";
 import { routing, usePathname, useRouter } from "@/i18n/routing";
 
-interface changeLocalizationProps {
+interface ChangeLocalizationProps {
   className?: string;
 }
 
-const ChangeLocalization: React.FC<changeLocalizationProps> = ({
-  className ="absolute top-4 ltr:left-4 rtl:right-4",
+const ChangeLocalization: React.FC<ChangeLocalizationProps> = ({
+  className = "absolute top-4 ltr:left-4 rtl:right-4",
 }) => {
   const currentLocale = useLocale();
   const router = useRouter();
@@ -33,9 +33,9 @@ const ChangeLocalization: React.FC<changeLocalizationProps> = ({
       <DropdownMenu>
         <DropdownMenuTrigger className=" p-2 active:outline-none focus-visible:!outline-none focus-visible:border-none active:border-none">
           <span className="flex items-center justify-center gap-1">
-            <span className="font-semibold">
+            {/* <span className="font-semibold">
               {currentLocale === "ar" ? "العربية" : "English"}
-            </span> 
+            </span>  */}
             <Globe />
           </span>
         </DropdownMenuTrigger>

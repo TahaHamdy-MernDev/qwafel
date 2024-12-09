@@ -15,7 +15,7 @@ const Search: React.FC<ISearch> = ({ children, title }) => {
   const t = useTranslations("search");
   const [toggleSearch, setToggleSearch] = useState<boolean>(false);
   return (
-    <Accordion type="single" collapsible className="rounded-lg">
+    <Accordion type="single" collapsible className="card flex items-center justify-between">
       <AccordionItem
         value="item-1"
         className="focus:outline-none focus-visible:outline-none border-none  shadow-none"
