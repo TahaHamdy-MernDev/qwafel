@@ -70,19 +70,19 @@ const RichTextEditor = ({
     editorProps: {
       attributes: {
         class:
-          "min-h-[150px] max-h-[150px] text-black  w-full rounded-md mb-1 border border-input bg-transparent px-6 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 overflow-auto",
+          "min-h-[13rem]  text-black  w-full rounded-md border border-t-0 rounded-t-none border-primary bg-white px-2 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 overflow-auto",
       },
     },
     extensions: [
       StarterKit.configure({
         orderedList: {
           HTMLAttributes: {
-            class: "list-decimal pl-4",
+            class: "list-decimal ltr:pl-4 rtl:pr-4",
           },
         },
         bulletList: {
           HTMLAttributes: {
-            class: "list-disc pl-4",
+            class: "list-disc ltr:pl-4  rtl:pr-4",
           },
         },
       }),
@@ -110,7 +110,7 @@ const RichTextEditor = ({
 
 const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
   return (
-    <div className="border border-input bg-transparent rounded-t-md  p-1 flex flex-row items-center gap-1">
+    <div className="border border-primary bg-white rounded-t-md   p-1 flex flex-row items-center gap-1">
       <Toggle
         size="sm"
         pressed={editor.isActive("heading")}

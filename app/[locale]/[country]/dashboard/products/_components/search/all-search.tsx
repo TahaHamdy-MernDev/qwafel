@@ -26,6 +26,11 @@ const AllSearch: React.FC = () => {
        >
         <div className="grid grid-cols-1 md:grid-cols-5 gap-2">
           <Input type="text" placeholder={t("code")} {...register("code")} />
+          <Input
+            type="text"
+            placeholder={t("product_sku")}
+            {...register("product_sku")}
+          />
           <Select
             options={status}
             placeholder={t("status.status")}
@@ -39,6 +44,11 @@ const AllSearch: React.FC = () => {
             name="category"
             //
           />
+           <DatePickerWithRange
+            placeholder={t("date")}
+            name="date"
+            control={control}
+          />
           <Input
             type="text"
             placeholder={t("user_code")}
@@ -49,11 +59,7 @@ const AllSearch: React.FC = () => {
             placeholder={t("product_name")}
             {...register("product_name")}
           />
-          <DatePickerWithRange
-            placeholder={t("date")}
-            name="date"
-            control={control}
-          />
+         
           <Input
             type="text"
             placeholder={t("seller_commission")}
@@ -64,11 +70,7 @@ const AllSearch: React.FC = () => {
             placeholder={t("system_commission")}
             {...register("system_commission")}
           />
-          <Input
-            type="text"
-            placeholder={t("product_sku")}
-            {...register("product_sku")}
-          />
+         
           <div className=" w-full flex max-w-lg items-start gap-2">
             <Button type="submit" className=" w-full">
               {tSearch("search")}

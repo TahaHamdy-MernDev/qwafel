@@ -26,6 +26,7 @@ export function NavMain({
     url?: string;
     icon?: React.ElementType;
     isActive?: boolean;
+    isVisible?: boolean;
     items?: {
       title?: string;
       isActive?: boolean;
@@ -49,7 +50,7 @@ export function NavMain({
     );
 
   const renderSubItems = (subItems: (typeof items)[0]["items"]) =>
-    subItems?.map((subItem) => (
+    subItems?.filter(item=>item.isVisible).map((subItem) => (
       <SidebarMenuSubItem key={subItem.title}>
         <SidebarMenuSubButton asChild className="h-10 py-3">
           <Link href={subItem.url} className="no-underline text-sm">
@@ -128,7 +129,7 @@ export function NavMain({
 
   return (
     <SidebarGroup>
-      <SidebarMenu>{items.map(renderMenuItem)}</SidebarMenu>
+      <SidebarMenu>{items.filter(item=>item.isVisible).map(renderMenuItem)}</SidebarMenu>
     </SidebarGroup>
   );
 }

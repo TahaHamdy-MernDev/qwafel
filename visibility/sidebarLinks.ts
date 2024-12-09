@@ -45,15 +45,13 @@ import { GrAnalytics } from "react-icons/gr";
 //     ],
 //   }
 
-
 export const sidebarLinks = ({
   role,
-  t
-}:{
-    role: string,
-    t :ReturnType<typeof useTranslations>
+  t,
+}: {
+  role: string;
+  t: ReturnType<typeof useTranslations>;
 }) => {
-
   return [
     {
       title: t("dashboard"),
@@ -67,7 +65,7 @@ export const sidebarLinks = ({
       url: "/reports",
       icon: GrAnalytics,
       isActive: false,
-      isVisible: true,
+      isVisible: false,
       items: [
         {
           title: t("reports.shipping_companies"),
@@ -144,9 +142,9 @@ export const sidebarLinks = ({
     {
       title: t("finance_management.finance_management"),
       url: "/finance-management",
-      icon: CircleDollarSign, 
+      icon: CircleDollarSign,
       isActive: false,
-      isVisible: true,
+      isVisible: false,
       items: [
         {
           title: t("finance_management.sales_management"),
@@ -210,26 +208,26 @@ export const sidebarLinks = ({
         {
           title: t("products.offers"),
           url: "/products/offers",
-          isVisible: true,
+          isVisible: false,
         },
         {
           title: t("products.wholesale_products"),
           url: "/products/wholesale",
-          isVisible: true,
+          isVisible: false,
         },
         {
           title: t("products.exclusive_products"),
           url: "/products/exclusive",
-          isVisible: true,
+          isVisible: false,
         },
       ],
     },
     {
       title: t("sales.sales"),
       url: "/sales",
-      icon: CircleDollarSign, 
+      icon: CircleDollarSign,
       isActive: false,
-      isVisible: true,
+      isVisible: false,
       items: [
         {
           title: t("sales.order_reviews"),
@@ -273,7 +271,7 @@ export const sidebarLinks = ({
       url: "/inventory",
       icon: CircleDollarSign, // Replace with an appropriate icon
       isActive: false,
-      isVisible: true,
+      isVisible: false,
       items: [
         {
           title: t("inventory.warehouses"),
@@ -291,59 +289,55 @@ export const sidebarLinks = ({
           isVisible: true,
         },
       ],
-    }
-,
-{
-  title: t("purchases.purchases"),
-  url: "/purchases",
-  icon: CircleDollarSign, // Replace with an appropriate icon
-  isActive: false,
-  isVisible: true,
-  items: [
-    {
-      title: t("purchases.suppliers"),
-      url: "/purchases/suppliers",
-      isVisible: true,
     },
     {
-      title: t("purchases.stock_movement"),
-      url: "/purchases/stock-movement",
-      isVisible: true,
-    },
-  ],
-}
-,
-{
-  title: t("finances.finance"),
-  url: "/finances",
-  icon: CircleDollarSign, // Replace with an appropriate icon
-  isActive: false,
-  isVisible: true,
-  items: [
-    {
-      title: t("finances.withdrawal_requests"),
-      url: "/finances/withdrawal-requests",
-      isVisible: true,
-    },
-    {
-      title: t("finances.outgoing"),
-      url: "/finances/outgoing",
-      isVisible: true,
+      title: t("purchases.purchases"),
+      url: "/purchases",
+      icon: CircleDollarSign,
+      isActive: false,
+      isVisible: false,
+      items: [
+        {
+          title: t("purchases.suppliers"),
+          url: "/purchases/suppliers",
+          isVisible: true,
+        },
+        {
+          title: t("purchases.stock_movement"),
+          url: "/purchases/stock-movement",
+          isVisible: true,
+        },
+      ],
     },
     {
-      title: t("finances.incoming"),
-      url: "/finances/incoming",
-      isVisible: true,
+      title: t("finances.finance"),
+      url: "/finances",
+      icon: CircleDollarSign,
+      isActive: false,
+      isVisible: false,
+      items: [
+        {
+          title: t("finances.withdrawal_requests"),
+          url: "/finances/withdrawal-requests",
+          isVisible: true,
+        },
+        {
+          title: t("finances.outgoing"),
+          url: "/finances/outgoing",
+          isVisible: true,
+        },
+        {
+          title: t("finances.incoming"),
+          url: "/finances/incoming",
+          isVisible: true,
+        },
+        {
+          title: t("finances.cash_and_bank_accounts"),
+          url: "/finances/cash-and-bank-accounts",
+          isVisible: true,
+        },
+      ],
     },
-    {
-      title: t("finances.cash_and_bank_accounts"),
-      url: "/finances/cash-and-bank-accounts",
-      isVisible: true,
-    },
-  ],
-}
-
-    
   ];
 };
 

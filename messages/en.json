@@ -14,7 +14,12 @@
         }
     },
     "global": {
-        "choose": "Choose"
+        "choose": "Choose",
+        "submit": "Submit",
+        "reset": "Reset",
+        "cancel": "Cancel",
+        "save": "Save",
+        "edit": "Edit"
     },
     "Validation": {
         "auth": {
@@ -169,10 +174,18 @@
         "hideSearch": "Hide"
     },
     "Products": {
+        "add_product": "Add Product",
+        "create_new_product": "Create New Product",
+        "title": "Product Title",
+        "thumbnail": "Thumbnail",
+        "product_images": "Product Images",
+        "description": "Description",
+        "external_url": "External Url",
         "all_products": "All Products",
         "code": "Code",
         "category": "Category",
         "user_code": "User Code",
+        "create": "Create",
         "status": {
             "status": "Status",
             "active": "Active",

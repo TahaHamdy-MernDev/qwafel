@@ -12,7 +12,7 @@ import {
 import { useLocale, useTranslations } from "next-intl";
 
 interface SelectOption {
-  value: string;
+  value: string| number;
   label: string;
 }
 
@@ -21,7 +21,7 @@ interface SelectComponentProps {
   label?: string;
   options: SelectOption[];
   name: string;
-  control: Control;
+  control?: Control;
 }
 
 export function Select({
@@ -30,6 +30,7 @@ export function Select({
   name,
   control,
   placeholder,
+  
 }: Readonly<SelectComponentProps>) {
   const t = useTranslations("global");
   const locale = useLocale();

@@ -16,6 +16,8 @@ import {
   endOfMonth,
   format,
 } from "date-fns";
+import { useLocale } from "next-intl";
+import { getLangDir } from "rtl-detect";
 
 interface DatePickerWithRangeProps
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -75,7 +77,8 @@ export function DatePickerWithRange({
       },
     },
   ];
-
+const locale = useLocale()
+const dir = getLangDir(locale)
   const [isOpen, setIsOpen] = useState(false);
 
   const handlePredefinedRangeClick = (range: { from: Date; to: Date }) => {
@@ -127,7 +130,7 @@ export function DatePickerWithRange({
             {formattedDate}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="center">
+        <PopoverContent className={cn("w-auto p-0 bg-white", dir ==="rtl" ? "!left-0":"!right-0 transform translate-x" )}>
           <Calendar
             initialFocus
             mode="range"

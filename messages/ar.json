@@ -14,7 +14,12 @@
         }
     },
     "global": {
-        "choose": "اختر"
+        "choose": "اختر",
+        "reset": "ا��ادة تعيين",
+        "submit": "��رسال",
+        "cancel": "��لغا��",
+        "agree": "موافق",
+        "disagree": "غير موافق"
     },
     "Validation": {
         "auth": {
@@ -161,7 +166,15 @@
         }
     },
     "Products": {
+        "add_product": "إضافة منتج",
+        "create_new_product": "انشاء منتج جديد",
+        "title": "اسم المنتج",
+        "thumbnail": "الصورة المصغرة ",
+        "product_images": "صور المنتج",
+        "external_url": "رابط خارجي",
+        "description": "وصف المنتج",
         "all_products": "كل المنتجات",
+        "create": "انشاء",
         "code": "الكود",
         "category": "القسم",
         "user_code": "كود المستخدم",

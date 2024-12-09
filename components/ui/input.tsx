@@ -57,7 +57,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       }
     }, [errorMessage, clearFieldError]);
     return (
-      <div className="grid w-full max-w-lg items-center gap-2">
+      <div className="grid w-full items-center gap-2">
         {label && (
           <label className="block text-gray-dark md:text-sm lg:text-base font-semibold ltr:pl-1 rtl:pr-1">
             {label}
@@ -68,13 +68,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             type={type}
             placeholder={placeholder}
             className={cn(
-              "flex h-12 w-full rounded-md border border-primary  focus-visible:outline-none bg-transparent px-3 py-1 text-base  transition-colors duration-200  file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground  placeholder:text-base disabled:cursor-not-allowed disabled:opacity-50 md:text-sm lg:text-base",
+              "input",
               rtlPadding,
               ltrPadding,
               hasError
                 ? "border-red-600"
                 : " focus:border-input-focus  focus-visible:border-primary",
-              className
+              className,
+              "text-black placeholder:text-black/50"
             )}
             ref={ref}
             {...props}

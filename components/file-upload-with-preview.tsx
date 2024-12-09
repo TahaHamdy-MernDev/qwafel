@@ -1,51 +1,116 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { FileUploadWithPreview } from "file-upload-with-preview";
-import "file-upload-with-preview/dist/style.css";
+import { useRef, useState } from "react";
+import { Images } from "lucide-react";
+import Image from "./reusable/Image";
+import { cn } from "@/lib/utils";
 
-interface FileUploaderProps {
-  name: string; // The name attribute for the file input
-  multiple?: boolean; // Whether to allow multiple file uploads
+interface ImageUploaderProps {
+  multiple?: boolean;
+  max?: number;
+  className?: string;
+  onFileChange: (files: File[]) => void;
 }
 
-const FileUploader = ({ name, multiple = false }: FileUploaderProps) => {
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+const ImageUploader = ({
+  onFileChange,
+  multiple = true,
+  className,
+  max = 10,
+}: ImageUploaderProps) => {
+  const [uploadedImages, setUploadedImages] = useState<File[]>([]);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  useEffect(() => {
-    const uploadInstance = new FileUploadWithPreview(name, {
-      text: {
-        chooseFile: "Choose files...",
-        browse: "Browse",
-        selectedCount: "files selected",
-      },
-      multiple,
-    });
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files) {
+      const newFiles = Array.from(files);
+      const totalFiles = [...uploadedImages, ...newFiles];
+      if (totalFiles.length <= max) {
+        setUploadedImages(totalFiles);
+        onFileChange(totalFiles);
+      } else {
+        alert(`You can only upload a maximum of ${max} images.`);
+      }
+    }
+  };
 
-    const handleFileUpload = (event: CustomEvent) => {
-      const files = uploadInstance.cachedFileArray;
-      setUploadedFiles(files); // Update the state with uploaded files
-      console.log("Uploaded files:", files);
-    };
+  // Handle image removal
+  const handleRemoveImage = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    index: number
+  ) => {
+    event.stopPropagation();
+    const updatedImages = uploadedImages.filter((_, i) => i !== index);
+    setUploadedImages(updatedImages);
+    onFileChange(updatedImages);
+  };
 
-    // Listen to the file upload event
-    document
-      .querySelector(`[data-upload-id="${name}"]`)
-      ?.addEventListener("fileUploadWithPreview:fileAdded", handleFileUpload);
-
-    return () => {
-      document
-        .querySelector(`[data-upload-id="${name}"]`)
-        ?.removeEventListener("fileUploadWithPreview:fileAdded", handleFileUpload);
-    };
-  }, [name, multiple]);
+  const openFilePicker = () => {
+    fileInputRef.current?.click();
+  };
 
   return (
-    <div
-      className="custom-file-container bg-transparent"
-      data-upload-id={name}
-    ></div>
+    <div className="image-uploader">
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        multiple={multiple}
+        onChange={handleFileUpload}
+        className="hidden"
+      />
+
+      <div
+        className={cn(
+          "cursor-pointer max-w-lg min-h-[15rem] p-4 border border-primary rounded-lg bg-transparent  transition",
+          className
+        )}
+      >
+        {uploadedImages.length === 0 ? (
+          <button
+            onClick={openFilePicker}
+            className="flex flex-col items-center justify-center text-gray-500 w-full min-h-[10rem]  "
+          >
+            <Images className="w-12 h-12 mb-2" />
+            <p>Click to upload images</p>
+          </button>
+        ) : (
+          <div className="p-2 grid grid-cols-3 gap-4">
+            {uploadedImages.map((file, index) => (
+              <div key={index + 1} className="relative group">
+                <Image
+                  width={140}
+                  height={140}
+                  src={URL.createObjectURL(file)}
+                  alt="Uploaded preview"
+                  className="w-full h-32 object-cover rounded-lg shadow-lg"
+                />
+                <button
+                  type="button"
+                  onClick={(event) => handleRemoveImage(event, index)}
+                  className="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  ×
+                </button>
+              </div>
+            ))}
+            {uploadedImages.length < max && (
+              <button
+                onClick={openFilePicker}
+                className="cursor-pointer p-4 border-2 border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 transition"
+              >
+                <div className="flex flex-col items-center justify-center text-gray-500">
+                  <Images className="w-12 h-12 mb-2" />
+                  <p>Add more</p>
+                </div>
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 
-export default FileUploader;
+export default ImageUploader;
