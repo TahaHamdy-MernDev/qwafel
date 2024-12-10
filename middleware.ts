@@ -9,5 +9,5 @@ export default createMiddleware(routing);
 
 export const config = {
   matcher: ["/", "/(ar|en)?/:path*"],
-  runtime: "edge",
+  runtime: "experimental-edge",
 };
