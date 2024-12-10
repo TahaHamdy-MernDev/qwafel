@@ -39,7 +39,7 @@ export default async function LocaleLayout({
   const dir = getLangDir(locale);
   return (
     <html lang={locale} dir={dir}>
-      <body className={`${din.variable} ${inter.variable} antialiased`}>
+      <body className={`${din.variable} ${inter.variable} antialiased w-svw min-h-svh overflow-hidden`}>
         <StoreProvider>
           <NextIntlClientProvider messages={messages}>
             {children}

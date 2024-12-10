@@ -1,8 +1,31 @@
 "use client";
 import ExcelButton from "@/components/excel-button";
 import Image from "@/components/reusable/Image";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Select } from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -12,6 +35,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Eye, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import React, { useState } from "react";
@@ -80,80 +104,143 @@ const AllTable: React.FC = () => {
     { label: t("status.inactive"), value: "inactive" },
   ];
   return (
-    <div className="mt-4 flex flex-col">
-      <div className="flex items-center justify-start">
-        <ExcelButton onClick={exportToExcel} disabled={false} />
-      </div>
-      <div className="mt-4 card">
-        <Table>
-          <TableCaption>A list of your recent invoices.</TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead>
-                <Checkbox
-                  checked={isAllSelected}
-                  onCheckedChange={toggleSelectAll}
-                />
-              </TableHead>
-              <TableHead>{t("column.date")}</TableHead>
-              <TableHead className="max-w-20">{t("column.product")}</TableHead>
-              <TableHead>{t("column.price")}</TableHead>
-              <TableHead>{t("column.current_stock")}</TableHead>
-              {/* <TableHead>{t("column.seller_commission")}</TableHead> */}
-              {/* <TableHead>{t("column.system_commission")}</TableHead> */}
-              <TableHead>{t("status.status")}</TableHead>
-              <TableHead>{t("column.seller")}</TableHead>
-              <TableHead>{t("column.actions")}</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {data.map((item, index) => (
-              <TableRow key={index + 1}>
-                <TableCell>
+    <div className="container p-2">
+      <div className="mt-4 flex flex-col">
+        <div className="flex items-center justify-start">
+          <ExcelButton onClick={exportToExcel} disabled={false} />
+        </div>
+        <div className="mt-4 w-full overflow-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>
                   <Checkbox
-                    checked={isSelected(item.id)}
-                    onCheckedChange={() => toggleSelection(item.id)}
+                    checked={isAllSelected}
+                    onCheckedChange={toggleSelectAll}
                   />
-                </TableCell>
-                <TableCell className="text-center">
-                  <div>11:50pm</div>
-                  {item.date}{" "}
-                </TableCell>
-                <TableCell>
-                  <div className="flex items-start justify-start gap-2">
-                    <Image
-                      width={60}
-                      height={60}
-                      alt={item.product}
-                      src="https://placehold.co/60x60"
-                      className=" rounded-lg"
-                    />
-                    <div className=" text-start break-words">
-                      #{item.id}
-                      <br />
-                      {item.product}
-                    </div>
-                  </div>
-                </TableCell>
-                <TableCell>{item.price}</TableCell>
-                <TableCell>{item.currentStock}</TableCell>
-                {/* <TableCell>{item.sellerCommission}</TableCell> */}
-                {/* <TableCell>{item.systemCommission}</TableCell> */}
-                <TableCell>
-                  {/* <Select
-            options={status}
-            placeholder={t("status.status")} 
-            control={control}
-            onValueChange={()=>console.log("tttttt")}
-            // {...register("status")} 
-          />
-            */}
-                </TableCell>
-                <TableCell>{item.seller}</TableCell>
+                </TableHead>
+
+                <TableHead className=" max-w-[2rem]">
+                  {t("column.product")}
+                </TableHead>
+                {/* <TableHead>{t("product_img")} </TableHead> */}
+                <TableHead>{t("column.price")}</TableHead>
+                <TableHead>{t("column.current_stock")}</TableHead>
+                {/* <TableHead>{t("column.seller_commission")}</TableHead> */}
+                {/* <TableHead>{t("column.system_commission")}</TableHead> */}
+                <TableHead>{t("column.seller")}</TableHead>
+                <TableHead>{t("status.status")}</TableHead>
+                <TableHead>{t("column.date")}</TableHead>
+                <TableHead className=" w-20">{t("column.actions")}</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {data.map((item, index) => (
+                <TableRow key={index + 1}>
+                  <TableCell>
+                    <Checkbox
+                      checked={isSelected(item.id)}
+                      onCheckedChange={() => toggleSelection(item.id)}
+                    />
+                  </TableCell>
+
+                  <TableCell className=" max-w-[9rem]">
+                    <div className="flex items-center gap-2 justify-start">
+                      <Image
+                        width={60}
+                        height={60}
+                        alt={item.product}
+                        src="https://placehold.co/60x60"
+                        className=" rounded-lg"
+                      />
+                      <div className=" rtl:text-start ltr:text-end break-words">
+                        #{item.id}
+                        <br />
+                        sku{item.id}
+                        <br />
+                        <span className=" truncate">{item.product}</span>
+                      </div>
+                    </div>
+                  </TableCell>
+
+                  <TableCell>{item.price}</TableCell>
+                  <TableCell>{item.currentStock}</TableCell>
+                  {/* <TableCell>{item.sellerCommission}</TableCell> */}
+                  {/* <TableCell>{item.systemCommission}</TableCell> */}
+                  <TableCell>{item.seller}</TableCell>
+                  <TableCell className=" min-w-[10rem]">
+                    <Select
+                      onValueChange={(value) => console.log(value)}
+                      defaultValue={"active"}
+                    >
+                      {/* <FormControl> */}
+                      <SelectTrigger className="h-10 !border-gray-600">
+                        <SelectValue placeholder={"active"} />
+                      </SelectTrigger>
+                      {/* </FormControl> */}
+                      <SelectContent>
+                        <SelectItem value="active">Active</SelectItem>
+                        <SelectItem value="inActive">inActive</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <div>11:50pm</div>
+                    {item.date}{" "}
+                  </TableCell>
+                  <TableCell className=" w-20">
+                    <div className=" flex items-center justify-center gap-2">
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button
+                            id="delete-product"
+                            variant="outline"
+                            className="border-none p-0 !size-7 text-lg"
+                          >
+                            <Trash2 className="cursor-pointer text-destructive hover:text-red-900 transition-all duration-200" />
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent dir="rtl">
+                          <AlertDialogHeader>
+                            {/* Localized Title */}
+                            <AlertDialogTitle className=" text-center">
+                              {t("delete.message")}
+                            </AlertDialogTitle>
+
+                            <AlertDialogDescription>
+                              {t("delete.permanently_delete")}
+                            </AlertDialogDescription>
+
+                            <div className="flex ltr:justify-end rtl:justify-start mt-4">
+                              <Image
+                                width={60}
+                                height={60}
+                                alt="tessss"
+                                src="https://placehold.co/60x60"
+                                className=" rounded-lg"
+                              />
+                            </div>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter className=" gap-2">
+                            <AlertDialogCancel>
+                              {t("delete.cancel")}
+                            </AlertDialogCancel>
+
+                            <AlertDialogAction>
+                              {t("delete.confirm")}
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+
+                      <Eye className="cursor-pointer size-6 text-gray-500" />
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </div>
   );

@@ -166,6 +166,7 @@
         }
     },
     "Products": {
+        "product_img":"صورة المنتج",
         "add_product": "إضافة منتج",
         "create_new_product": "انشاء منتج جديد",
         "title": "اسم المنتج",
@@ -175,6 +176,12 @@
         "description": "وصف المنتج",
         "all_products": "كل المنتجات",
         "create": "انشاء",
+        "delete":{
+            "message": "هل أنت متأكد من حذف المنتج؟",
+            "permanently_delete":" لا يمكن التراجع عن هذا الإجراء. سيتم حذف المنتج نهائيًا",
+            "confirm": "نعم",
+            "cancel": "إلغاء"
+        },
         "code": "الكود",
         "category": "القسم",
         "user_code": "كود المستخدم",

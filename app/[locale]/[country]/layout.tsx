@@ -11,5 +11,5 @@ export default async function Layout({
   if(!allowedCountry.includes(country)){
     notFound();
   }
-  return <section>{children}</section>;
+  return children
 }

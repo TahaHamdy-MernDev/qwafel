@@ -35,9 +35,10 @@ export function DashboardLayout({
   const sidebarDir = dir === "rtl" ? "right" : "left";
   return (
     // <SidebarProvider className=" container mx-auto">
-    <SidebarProvider className="mx-auto">
+    <SidebarProvider className="">
       <AppSidebar side={sidebarDir} className=" !bg-transparent" />
       <SidebarInset className=" !bg-transparent">
+        
         <header className="flex  h-16 shrink-0 justify-between items-center border-b bg-white rounded-ml-lg gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-14">
           <div className="flex items-center justify-between gap-2 container mx-auto p-4">
             <div className="flex items-center gap-2">
@@ -53,7 +54,7 @@ export function DashboardLayout({
           </div>
           {/* <NavUser user={data.user} /> */}
         </header>
-        <div className="container mx-auto p-4 overflow-hidden">{children}</div>
+        <div className="container mx-auto mt-2 overflow-hidden">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

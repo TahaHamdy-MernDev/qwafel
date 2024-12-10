@@ -65,6 +65,7 @@ export default function Page() {
   }
 
   return (
+ 
     <div className="flex flex-col p-4">
       <div className="bg-white p-4 drop-shadow-lg rounded-lg">
         <div className="mb-4">
@@ -84,7 +85,6 @@ export default function Page() {
                   <FormControl>
                     <Input {...field} className=" !w-full" />
                   </FormControl>
-
                   <FormMessage />
                 </FormItem>
               )}
@@ -141,7 +141,7 @@ export default function Page() {
                 </FormItem>
               )}
             />
-            <div className=" flex  w-full gap-2">
+            <div className=" flex flex-col md:flex-row w-full gap-2">
               <FormField
                 control={form.control}
                 name="thumbnail"
@@ -182,5 +182,6 @@ export default function Page() {
         </Form>
       </div>
     </div>
+    
   );
 }

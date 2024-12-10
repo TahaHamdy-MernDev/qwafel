@@ -198,7 +198,7 @@ const Sidebar = React.forwardRef<
           <SheetContent
             data-sidebar="sidebar"
             data-mobile="true"
-            className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+            className="w-[--sidebar-width] bg-white p-0 text-sidebar-foreground [&>button]:hidden"
             style={
               {
                 "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
@@ -206,7 +206,7 @@ const Sidebar = React.forwardRef<
             }
             side={side}
           >
-            <div className="flex h-full w-full flex-col">{children}</div>
+            <div className="flex h-full w-full flex-col ">{children}</div>
           </SheetContent>
         </Sheet>
       )
@@ -234,7 +234,7 @@ const Sidebar = React.forwardRef<
         <div className=" fixed top-0 bg-white ">
           <div
             className={cn(
-              `duration-200 p-2 inset-y-0 inset-x-1/2 z-10 hidden  w-[--sidebar-width] h-svh transition-[left,right,width] ease-linear md:flex`,
+              `duration-200  p-2 inset-y-0 inset-x-1/2 z-10 hidden  w-[--sidebar-width] h-svh transition-[left,right,width] ease-linear md:flex`,
               side === "left"
                 ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
                 : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
@@ -406,7 +406,7 @@ const SidebarContent = React.forwardRef<
       ref={ref}
       data-sidebar="content"
       className={cn(
-        "flex w-full min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden group-data-[collapsible=icon]:items-center",
+        "flex w-full min-h-0 flex-1 flex-col bg-white gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden group-data-[collapsible=icon]:items-center",
         className
       )}
       {...props}
