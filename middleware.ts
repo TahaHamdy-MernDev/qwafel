@@ -8,6 +8,5 @@ export default createMiddleware(routing);
 // };
 
 export const config = {
-  matcher: ["/", "/(ar|en)?/:path*"],
-  runtime: "experimental-edge",
+  matcher: ["/", "/(ar|en)?/:path*"]
 };
