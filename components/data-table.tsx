@@ -22,7 +22,7 @@ interface IDataTableProps<TData, TValue> {
 export function DataTable<TData, TValue>({
   columns,
   data,
-}: IDataTableProps<TData, TValue>) {
+}: Readonly<IDataTableProps<TData, TValue>>) {
   const table = useReactTable({
     data,
     columns,

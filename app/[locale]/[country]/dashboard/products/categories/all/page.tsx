@@ -1,8 +1,6 @@
+import { DataTable } from "@/components/data-table";
 import AllCategoriesSearch from "../../_components/search/all-categories";
-import AllCategoriesTable from "../../_components/tables/all-categories";
 import { columns, ICategory } from "./columns";
-import { DataTable } from "./data-table";
-
 async function getData(): Promise<ICategory[]> {
   return [
     {
@@ -30,7 +28,7 @@ async function getData(): Promise<ICategory[]> {
   ];
 }
 export default async function Page() {
-    const data = await getData()
+  const data = await getData();
   return (
     <div>
       <AllCategoriesSearch />

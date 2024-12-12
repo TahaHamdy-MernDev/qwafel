@@ -17,8 +17,10 @@
         "upload_image": "اضف صوره ",
         "upload_images": "اضف صور ",
         "choose": "اختر",
-        "submit": "��رسال",
-        "cancel": "��لغا��",
+        "add_new": "اضافه",
+        "submit": "ارسال",
+        "create": "انشاء",
+        "cancel": "الغاء",
         "agree": "موافق",
         "search": "بحث",
         "reset": "حذف",
@@ -231,6 +233,24 @@
             "name": "اسم القسم",
             "code": "الكود",
             "create": "انشاء"
+        },
+        "Sizes": {
+            "sizes": "المقاسات",
+            "add_new_size": "اضافة مقاس جديد",
+            "name": "المقاس"
+        },
+        "Colors": {
+            "Colors": "الألوان",
+            "add_new_color": "اضافة لون جديد",
+            "name": "اللون"
+        },
+        "Inventory": {
+            "inventory": "المخزون",
+            "warehouses": "المخازن",
+            "add_new_warehouse": "اضافة مخزن جديد",
+            "name": "المخزن",
+            "country":"الدوله",
+            "date":"التاريخ"
         }
     },
     "status": {

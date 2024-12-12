@@ -88,7 +88,7 @@ export const columns: ColumnDef<ICategory>[] = [
       const id = row.original.id;
       return (
         <div className="flex items-center justify-center gap-2">
-            <Edit2  className="cursor-pointer"/>
+          <Edit2 className="cursor-pointer" />
 
           <Dialog>
             <DialogTrigger asChild>
@@ -121,8 +121,6 @@ export const columns: ColumnDef<ICategory>[] = [
               </DialogFooter>
             </DialogContent>
           </Dialog>
-          
-         
         </div>
       );
     },

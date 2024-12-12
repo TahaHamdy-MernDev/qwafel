@@ -17,6 +17,8 @@
         "choose": "Choose",
         "submit": "Submit",
         "search": "Search",
+        "create": "Create",
+        "add_new": "Add New",
         "upload_image": "Upload image",
         "upload_images": "upload images",
         "reset": "Reset",
@@ -232,7 +234,31 @@
             "add": "Add Category",
             "name": "Name",
             "code": "Code",
-            "create":"Create"
+            "create": "Create"
+        },
+        "Sizes": {
+            "sizes": "Sizes",
+            "add_new_size": "Add New Size",
+            "title": "All Sizes",
+            "add": "Add Size",
+            "name": "Name",
+            "create": "Create"
+        },
+        "Colors": {
+            "Colors": "Colors",
+            "add_new_color": "Add New Color",
+            "name": "Colors"
+        },
+        "Inventory":{
+            "inventory": "Inventory",
+            "warehouses": "Warehouses",
+            "add_new_warehouse": "Add New Warehouse",
+            "title": "All Warehouses",
+            "add": "Add Warehouse",
+            "name": "Name",
+            "country":"Country",
+            "date":"Date"
+            
         }
     },
     "status": {
