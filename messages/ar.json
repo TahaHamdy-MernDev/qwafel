@@ -14,11 +14,14 @@
         }
     },
     "global": {
+        "upload_image": "اضف صوره ",
+        "upload_images": "اضف صور ",
         "choose": "اختر",
-        "reset": "ا��ادة تعيين",
         "submit": "��رسال",
         "cancel": "��لغا��",
         "agree": "موافق",
+        "search": "بحث",
+        "reset": "حذف",
         "disagree": "غير موافق"
     },
     "Validation": {
@@ -51,6 +54,10 @@
                 "min": "يجب أن يتكون رقم الهاتف من {minLength} أرقام على الأقل",
                 "max": "لا يمكن أن يتجاوز رقم الهاتف {maxLength} أرقام"
             }
+        },
+        "Categories": {
+            "required": "اسم القسم مطلوب",
+            "invalid": "قم باختيار قسم صالح"
         }
     },
     "Auth": {
@@ -166,7 +173,7 @@
         }
     },
     "Products": {
-        "product_img":"صورة المنتج",
+        "product_img": "صورة المنتج",
         "add_product": "إضافة منتج",
         "create_new_product": "انشاء منتج جديد",
         "title": "اسم المنتج",
@@ -176,9 +183,9 @@
         "description": "وصف المنتج",
         "all_products": "كل المنتجات",
         "create": "انشاء",
-        "delete":{
+        "delete": {
             "message": "هل أنت متأكد من حذف المنتج؟",
-            "permanently_delete":" لا يمكن التراجع عن هذا الإجراء. سيتم حذف المنتج نهائيًا",
+            "permanently_delete": " لا يمكن التراجع عن هذا الإجراء. سيتم حذف المنتج نهائيًا",
             "confirm": "نعم",
             "cancel": "إلغاء"
         },
@@ -215,5 +222,20 @@
     "HomePage": {
         "title": "اهلا!",
         "about": "Go to the about page"
+    },
+    "Pages": {
+        "Categories": {
+            "add_new_category": " اضافة قسم جديد",
+            "title": "الاقسام",
+            "add": "اضافة قسم",
+            "name": "اسم القسم",
+            "code": "الكود",
+            "create": "انشاء"
+        }
+    },
+    "status": {
+        "status": "الحاله",
+        "active": "نشط",
+        "inactive": "غير نشط"
     }
 }

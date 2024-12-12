@@ -104,12 +104,12 @@ const AllTable: React.FC = () => {
     { label: t("status.inactive"), value: "inactive" },
   ];
   return (
-    <div className="container p-2">
+    <div className="">
       <div className="mt-4 flex flex-col">
         <div className="flex items-center justify-start">
           <ExcelButton onClick={exportToExcel} disabled={false} />
         </div>
-        <div className="mt-4 w-full overflow-auto">
+        <div className="mt-4  ">
           <Table>
             <TableHeader>
               <TableRow>
@@ -123,11 +123,8 @@ const AllTable: React.FC = () => {
                 <TableHead className=" max-w-[2rem]">
                   {t("column.product")}
                 </TableHead>
-                {/* <TableHead>{t("product_img")} </TableHead> */}
                 <TableHead>{t("column.price")}</TableHead>
                 <TableHead>{t("column.current_stock")}</TableHead>
-                {/* <TableHead>{t("column.seller_commission")}</TableHead> */}
-                {/* <TableHead>{t("column.system_commission")}</TableHead> */}
                 <TableHead>{t("column.seller")}</TableHead>
                 <TableHead>{t("status.status")}</TableHead>
                 <TableHead>{t("column.date")}</TableHead>
@@ -165,19 +162,17 @@ const AllTable: React.FC = () => {
 
                   <TableCell>{item.price}</TableCell>
                   <TableCell>{item.currentStock}</TableCell>
-                  {/* <TableCell>{item.sellerCommission}</TableCell> */}
-                  {/* <TableCell>{item.systemCommission}</TableCell> */}
                   <TableCell>{item.seller}</TableCell>
                   <TableCell className=" min-w-[10rem]">
                     <Select
                       onValueChange={(value) => console.log(value)}
                       defaultValue={"active"}
                     >
-                      {/* <FormControl> */}
+                    
                       <SelectTrigger className="h-10 !border-gray-600">
                         <SelectValue placeholder={"active"} />
                       </SelectTrigger>
-                      {/* </FormControl> */}
+                     
                       <SelectContent>
                         <SelectItem value="active">Active</SelectItem>
                         <SelectItem value="inActive">inActive</SelectItem>
@@ -202,7 +197,6 @@ const AllTable: React.FC = () => {
                         </AlertDialogTrigger>
                         <AlertDialogContent dir="rtl">
                           <AlertDialogHeader>
-                            {/* Localized Title */}
                             <AlertDialogTitle className=" text-center">
                               {t("delete.message")}
                             </AlertDialogTitle>
@@ -240,7 +234,7 @@ const AllTable: React.FC = () => {
               ))}
             </TableBody>
           </Table>
-        </div>
+        </div> 
       </div>
     </div>
   );

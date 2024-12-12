@@ -16,6 +16,9 @@
     "global": {
         "choose": "Choose",
         "submit": "Submit",
+        "search": "Search",
+        "upload_image": "Upload image",
+        "upload_images": "upload images",
         "reset": "Reset",
         "cancel": "Cancel",
         "save": "Save",
@@ -51,6 +54,10 @@
                 "required": "Confirm Password is required",
                 "mismatch": "Passwords do not match"
             }
+        },
+        "Categories": {
+            "required": "Category is required",
+            "invalid": "Please select a valid category"
         }
     },
     "Auth": {
@@ -217,5 +224,20 @@
     "HomePage": {
         "title": "Hello world!",
         "about": "Go to the about page"
+    },
+    "Pages": {
+        "Categories": {
+            "add_new_category": "Add New Category",
+            "title": "All Categories",
+            "add": "Add Category",
+            "name": "Name",
+            "code": "Code",
+            "create":"Create"
+        }
+    },
+    "status": {
+        "status": "Status",
+        "active": "Active",
+        "inactive": "Inactive"
     }
 }

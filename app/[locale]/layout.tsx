@@ -39,10 +39,12 @@ export default async function LocaleLayout({
   const dir = getLangDir(locale);
   return (
     <html lang={locale} dir={dir}>
-      <body className={`${din.variable} ${inter.variable} antialiased w-svw min-h-svh`}>
+      <body className={`${din.variable} ${inter.variable} antialiased`}>
         <StoreProvider>
           <NextIntlClientProvider messages={messages}>
-            {children}
+         
+             {children}
+          
           </NextIntlClientProvider>
         </StoreProvider>
       </body>

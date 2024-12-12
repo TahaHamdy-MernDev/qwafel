@@ -192,7 +192,7 @@ export const sidebarLinks = ({
         },
         {
           title: t("products.category"),
-          url: "/products/categories",
+          url: "/products/categories/all",
           isVisible: true,
         },
         {

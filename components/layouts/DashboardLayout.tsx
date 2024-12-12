@@ -54,7 +54,7 @@ export function DashboardLayout({
           </div>
           {/* <NavUser user={data.user} /> */}
         </header>
-        <div className="container mx-auto mt-2 overflow-hidden">{children}</div>
+        <div className="container mt-2">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

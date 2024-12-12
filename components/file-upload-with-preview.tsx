@@ -63,7 +63,7 @@ const ImageUploader = ({
 
       <div
         className={cn(
-          "cursor-pointer max-w-lg min-h-[15rem] p-4 border border-primary rounded-lg bg-transparent  transition",
+          "cursor-pointer flex justify-center items-center max-w-lg min-h-[15rem] p-4 border border-primary rounded-lg bg-transparent  transition",
           className
         )}
       >

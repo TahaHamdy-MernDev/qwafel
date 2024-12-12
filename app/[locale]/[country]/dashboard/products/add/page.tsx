@@ -66,7 +66,7 @@ export default function Page() {
 
   return (
  
-    <div className="flex flex-col p-4">
+    <div className="flex flex-col">
       <div className="bg-white p-4 drop-shadow-lg rounded-lg">
         <div className="mb-4">
           <h2 className=" text-2xl text-black font-semibold">

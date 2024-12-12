@@ -5,9 +5,5 @@ export default async function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <DashboardLayout>
-      {children}
-    </DashboardLayout>
-  );
+  return <DashboardLayout>{children}</DashboardLayout>;
 }
