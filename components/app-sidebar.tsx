@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   AudioWaveform,
   BookOpen,
@@ -12,23 +12,23 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { NavUser } from "@/components/nav-user";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
-import sidebarLinks from "@/visibility/sidebarLinks"
-import { useTranslations } from "next-intl"
-import { usePathname } from "@/i18n/routing"
-import Image from "./reusable/Image"
+} from "@/components/ui/sidebar";
+import sidebarLinks from "@/visibility/sidebarLinks";
+import { useTranslations } from "next-intl";
+import { usePathname } from "@/i18n/routing";
+import Image from "./reusable/Image";
 
 // This is sample data.
 const data = {
@@ -158,19 +158,19 @@ const data = {
       icon: Map,
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const pathname=  usePathname()
-  console.log(pathname)
-  const links= sidebarLinks({role:"admin", t:useTranslations("Sidebar")})
+  const pathname = usePathname();
+  console.log(pathname);
+  const links = sidebarLinks({ role: "admin", t: useTranslations("Sidebar") });
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
         {/* <TeamSwitcher teams={data.teams} /> */}
         <div className="flex justify-center mb-8 mt-8">
-        <Image src="/logo.svg" width={160} height={100} alt="Logo" />
-      </div>
+          <Image src="/logo.svg" width={160} height={100} alt="Logo" />
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={links} />
@@ -181,5 +181,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
