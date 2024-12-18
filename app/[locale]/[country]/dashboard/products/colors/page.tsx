@@ -1,24 +1,22 @@
-import { getTranslations } from "next-intl/server";
-import { getColumns, IColor } from "./columns";
+"use client";
+import { useGetColorsQuery } from "@/redux/services/products/colors-api";
+import { getColumns } from "./columns";
 import Header from "./header";
 import { DataTable } from "@/components/data-table";
-async function getData(): Promise<IColor[]> {
-  return [
-    { id: 1, name: "Red" },
-    { id: 2, name: "Green" },
-    { id: 3, name: "Blue" },
-    { id: 4, name: "Yellow" },
-  ];
-}
+import { useTranslations } from "next-intl";
 
-export default async function Page() {
-  const data = await getData();
-  const t = await getTranslations("Pages.Colors");
+
+export default function Page() {
+  const t = useTranslations("Pages.Colors");
+  const { data, isLoading } = useGetColorsQuery();
+  if (isLoading) return <p>Loading...</p>;
+  if (!data) return <p>Error fetching data</p>;
+  const colors = data?.data;
   const columns = getColumns(t);
   return (
     <section className=" container">
       <Header />
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={columns} data={colors} />
     </section>
   );
 }

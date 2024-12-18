@@ -26,6 +26,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useCreateColorMutation } from "@/redux/services/products/colors-api";
+import { useToast } from "@/hooks/use-toast";
 const createSize = z.object({
   name: z.string().min(1).max(20),
 });
@@ -33,14 +35,25 @@ type formInputs = z.infer<typeof createSize>;
 
 const Header: React.FC = () => {
   const global = useTranslations("global");
+  const res_status = useTranslations("res_status");
   const t = useTranslations("Pages.Colors");
+  const { toast } = useToast();
+  const [createColor, { isLoading }] = useCreateColorMutation();
   const createForm = useForm<formInputs>({
     resolver: zodResolver(createSize),
     mode: "onChange",
     defaultValues: { name: "" },
   });
-  const onSubmitCreate = (data: formInputs) => {
+  const onSubmitCreate = async (data: formInputs) => {
     console.log("Form submitted with data:", data);
+    await createColor(data)
+      .unwrap()
+      .then(() => {
+        toast({
+          description: res_status("created_successfully"),
+        });
+        createForm.reset();
+      });
   };
   return (
     <div className="bg-white shadow-lg rounded-lg px-4 py-2 flex items-center justify-between">
@@ -75,7 +88,7 @@ const Header: React.FC = () => {
                 )}
               />
               <DialogFooter>
-                <Button type="submit">{global("create")}</Button>
+                <Button type="submit" isLoading={isLoading}>{global("create")}</Button>
                 <DialogClose asChild>
                   <Button type="button" variant="outline">
                     {global("cancel")}

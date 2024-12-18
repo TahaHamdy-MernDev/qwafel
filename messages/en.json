@@ -26,6 +26,10 @@
         "save": "Save",
         "edit": "Edit"
     },
+    "res_status": {
+        "created_successfully": "Created Successfully",
+        "updated_successfully": "Updated Successfully "
+    },
     "Validation": {
         "auth": {
             "first_name": {
@@ -249,16 +253,15 @@
             "add_new_color": "Add New Color",
             "name": "Colors"
         },
-        "Inventory":{
+        "Inventory": {
             "inventory": "Inventory",
             "warehouses": "Warehouses",
             "add_new_warehouse": "Add New Warehouse",
             "title": "All Warehouses",
             "add": "Add Warehouse",
             "name": "Name",
-            "country":"Country",
-            "date":"Date"
-            
+            "country": "Country",
+            "date": "Date"
         }
     },
     "status": {

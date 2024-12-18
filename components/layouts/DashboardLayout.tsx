@@ -23,6 +23,8 @@ import ChangeCountry from "../change-country";
 import { useEffect, useState } from "react";
 import { getAuthToken } from "@/lib/cookies";
 import { useRouter } from "@/i18n/routing";
+import { useAppDispatch } from "@/redux/hooks";
+import { setToken } from "@/redux/slices/auth-slice";
 const data = {
   user: {
     name: "shadcn",
@@ -38,20 +40,21 @@ export function DashboardLayout({
   const dir = getLangDir(locale);
   const sidebarDir = dir === "rtl" ? "right" : "left";
   const router = useRouter();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     const token = getAuthToken();
     if (!token) {
       router.push("/auth/login");
     } else {
+      dispatch(setToken({ token: token }));
       setIsAuthenticated(true);
     }
-  }, [router]);
+  }, [router, dispatch]);
 
   if (!isAuthenticated) {
     return <div>Loading...</div>;
   }
   return (
-  
     <SidebarProvider className="">
       <AppSidebar side={sidebarDir} className=" !bg-transparent" />
       <SidebarInset className=" !bg-transparent">

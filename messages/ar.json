@@ -26,6 +26,10 @@
         "reset": "حذف",
         "disagree": "غير موافق"
     },
+    "res_status": {
+        "created_successfully": "تم الانشاء بنجاح",
+        "updated_successfully":"تم التعديل بنجاح"
+    },
     "Validation": {
         "auth": {
             "first_name": {
@@ -249,8 +253,8 @@
             "warehouses": "المخازن",
             "add_new_warehouse": "اضافة مخزن جديد",
             "name": "المخزن",
-            "country":"الدوله",
-            "date":"التاريخ"
+            "country": "الدوله",
+            "date": "التاريخ"
         }
     },
     "status": {

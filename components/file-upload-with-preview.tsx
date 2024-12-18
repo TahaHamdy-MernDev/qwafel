@@ -33,21 +33,33 @@ const ImageUploader = ({
         alert(`You can only upload a maximum of ${max} images.`);
       }
     }
+    // Reset the input value so the same file can be selected again
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
-  // Handle image removal
   const handleRemoveImage = (
     event: React.MouseEvent<HTMLButtonElement>,
     index: number
   ) => {
+    event.preventDefault();
     event.stopPropagation();
     const updatedImages = uploadedImages.filter((_, i) => i !== index);
     setUploadedImages(updatedImages);
     onFileChange(updatedImages);
+    // Reset the input value when removing an image
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
-  const openFilePicker = () => {
-    fileInputRef.current?.click();
+  const openFilePicker = (event: React.MouseEvent) => {
+    event.preventDefault();
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""; // Reset before opening
+      fileInputRef.current.click();
+    }
   };
 
   return (
@@ -63,14 +75,15 @@ const ImageUploader = ({
 
       <div
         className={cn(
-          "cursor-pointer flex justify-center items-center max-w-lg min-h-[15rem] p-4 border border-primary rounded-lg bg-transparent  transition",
+          "cursor-pointer flex justify-center items-center max-w-lg min-h-[15rem] p-4 border border-primary rounded-lg bg-transparent transition",
           className
         )}
       >
         {uploadedImages.length === 0 ? (
           <button
+            type="button"
             onClick={openFilePicker}
-            className="flex flex-col items-center justify-center text-gray-500 w-full min-h-[10rem]  "
+            className="flex flex-col items-center justify-center text-gray-500 w-full min-h-[10rem]"
           >
             <Images className="w-12 h-12 mb-2" />
             <p>Click to upload images</p>
@@ -78,7 +91,7 @@ const ImageUploader = ({
         ) : (
           <div className="p-2 grid grid-cols-3 gap-4">
             {uploadedImages.map((file, index) => (
-              <div key={index + 1} className="relative group">
+              <div key={`${file.name}-${index}`} className="relative group">
                 <Image
                   width={140}
                   height={140}
@@ -97,6 +110,7 @@ const ImageUploader = ({
             ))}
             {uploadedImages.length < max && (
               <button
+                type="button"
                 onClick={openFilePicker}
                 className="cursor-pointer p-4 border-2 border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 transition"
               >

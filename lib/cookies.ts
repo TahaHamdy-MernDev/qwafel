@@ -39,7 +39,7 @@ export const saveAuthToken = ({ token, expiresIn }: ICookies) => {
     sameSite: "Strict",
   });
 };
-export const getAuthToken = () => {
+export const getAuthToken =  () => {
   return Cookies.get("auth_token");
 };
 export const clearAuthToken = () => {

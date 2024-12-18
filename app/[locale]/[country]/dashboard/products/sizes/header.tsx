@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Typography from "@/components/reusable/typography";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,22 +26,40 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-const createSize = z.object({
+import { useCreateSizeMutation } from "@/redux/services/products/sizes-api";
+import { useToast } from "@/hooks/use-toast";
+const createSizeForm = z.object({
   name: z.string().min(1).max(20),
 });
-type formInputs = z.infer<typeof createSize>;
+type formInputs = z.infer<typeof createSizeForm>;
 
 const Header: React.FC = () => {
+  const [createSize, { isLoading }] = useCreateSizeMutation();
+  const { toast } = useToast();
   const global = useTranslations("global");
   const t = useTranslations("Pages.Sizes");
   const createForm = useForm<formInputs>({
-    resolver: zodResolver(createSize),
+    resolver: zodResolver(createSizeForm),
     mode: "onChange",
     defaultValues: { name: "" },
   });
-  const onSubmitCreate = (data: formInputs) => {
+  const onSubmitCreate = async (data: formInputs) => {
     console.log("Form submitted with data:", data);
+    await createSize(data)
+      .unwrap()
+      .then(() => {
+        createForm.reset();
+        toast({
+          description: "Successfully created the size!",
+        });
+      })
+      .catch((err) => {
+        toast({
+          description: err?.data?.message || "An error occurred!",
+        });
+      });
   };
+
   return (
     <div className="bg-white shadow-lg rounded-lg px-4 py-2 flex items-center justify-between">
       <Typography as={"h1"} variant={"title"}>
@@ -75,7 +93,9 @@ const Header: React.FC = () => {
                 )}
               />
               <DialogFooter>
-                <Button type="submit">{global("create")}</Button>
+                <Button type="submit" isLoading={isLoading}>
+                  {global("create")}
+                </Button>
                 <DialogClose asChild>
                   <Button type="button" variant="outline">
                     {global("cancel")}
