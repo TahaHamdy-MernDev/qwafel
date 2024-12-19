@@ -25,7 +25,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { getLangDir } from "rtl-detect";
 import z from "zod";
-import CreateCategoryForm from "../../categories/all/create";
+import CreateCategoryForm from "../../categories/all/actions/create";
 
 type FormInputs = z.infer<ReturnType<typeof getSearchCategorySchema>>;
 

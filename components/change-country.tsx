@@ -1,8 +1,7 @@
 import useCountry from "@/hooks/use-country";
-import { routing, usePathname, useRouter } from "@/i18n/routing";
+import { usePathname, useRouter } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
-
-import { Globe } from "lucide-react";
+import Cookies from "js-cookie";
 import React from "react";
 import {
   DropdownMenu,
@@ -11,8 +10,6 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import Image from "./reusable/Image";
-import { Button } from "./ui/button";
-
 const ChangeCountry: React.FC = () => {
   const currentCountry = useCountry();
   const router = useRouter();
@@ -21,7 +18,7 @@ const ChangeCountry: React.FC = () => {
   const changeCountry = (newCountry: string) => {
     if (newCountry === currentCountry) return;
     const newPath = pathname.replace(`/${currentCountry}`, `/${newCountry}`);
-
+    Cookies.set("country", newCountry);
     router.replace(newPath);
   };
   const country = [
@@ -31,13 +28,13 @@ const ChangeCountry: React.FC = () => {
   return (
     <div>
       <DropdownMenu>
-        <DropdownMenuTrigger className="py-3 active:outline-none focus-visible:!outline-none focus-visible:border-none active:border-none">
-          <link
+        <DropdownMenuTrigger className="bg-gray-200 rounded-full p-2 active:outline-none focus-visible:!outline-none focus-visible:border-none active:border-none">
+          {/* <link
             type="image/png"
             sizes="16x16"
             rel="icon"
             href=".../icons8-saudi arabia-color-16.png"
-          />
+          /> */}
           <Image
             width={24}
             height={24}

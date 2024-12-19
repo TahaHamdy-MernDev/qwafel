@@ -24,11 +24,12 @@
         "agree": "موافق",
         "search": "بحث",
         "reset": "حذف",
+        "confirm": "تاكيد",
         "disagree": "غير موافق"
     },
     "res_status": {
         "created_successfully": "تم الانشاء بنجاح",
-        "updated_successfully":"تم التعديل بنجاح"
+        "updated_successfully": "تم التعديل بنجاح"
     },
     "Validation": {
         "auth": {
@@ -231,12 +232,28 @@
     },
     "Pages": {
         "Categories": {
+            "status": "الحاله",
+            "active": "نشط",
+            "inactive": "غير نشط",
+            "edit_category": "تعديل القسم",
             "add_new_category": " اضافة قسم جديد",
             "title": "الاقسام",
             "add": "اضافة قسم",
             "name": "اسم القسم",
             "code": "الكود",
-            "create": "انشاء"
+            "create": "انشاء",
+            "name_ar": "اسم القسم بالعربية",
+            "name_en": "اسم القسم بالانجليزية",
+            "delete_category": "حذف التصنيف",
+            "message": "هل أنت متأكد أنك تريد حذف {name}؟",
+            "permanently_delete": "هذا الإجراء لا يمكن التراجع عنه.",
+            "success_message": "تم حذف التصنيف بنجاح.",
+            "error_message": "فشل في حذف التصنيف.",
+            "default_image_alt": "صورة القسم",
+            "date":"التاريخ",
+            "actions":"اجراءات",
+            "cancel": "إلغاء",
+            "confirm": "تأكيد"
         },
         "Sizes": {
             "sizes": "المقاسات",

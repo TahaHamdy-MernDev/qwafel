@@ -1,17 +1,5 @@
 "use client";
 import Image from "@/components/reusable/Image";
-
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  DialogClose,
-} from "@/components/ui/dialog";
 import {
   Select,
   SelectContent,
@@ -21,106 +9,89 @@ import {
 } from "@/components/ui/select";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Edit2, Trash2 } from "lucide-react";
-export interface ICategory {
+import { useTranslations } from "next-intl";
+import EditCategoryForm from "./actions/update-category";
+import { formatDateTime } from "@/common/format-date";
+import DeleteCategory from "./actions/delete-category";
+interface ICategory {
   id: number;
-  name: string;
-  image: string;
+  name_ar: string;
+  name_en: string;
   is_active: boolean;
-  created_at: string;
+  image?: string;
+  createdAt?: string;
+  updated_at?: string;
 }
-
-export const columns: ColumnDef<ICategory>[] = [
+export const getColumns = (
+  t: ReturnType<typeof useTranslations>,
+  lang: string
+): ColumnDef<ICategory>[] => [
   {
     accessorKey: "id",
     header: "#",
   },
   {
-    accessorKey: "name",
-    header: "Name",
+    accessorKey: "createdAt",
+    header: t("date"),
+    cell: ({ row }) => formatDateTime(row.original.createdAt),
+  },
+  {
+    accessorKey: `name_${lang}`,
+    header: t("name"),
   },
   {
     accessorKey: "image",
-    header: "Image",
+    header: t("default_image_alt"),
     cell: ({ row }) => (
       <div className=" flex items-center justify-center">
         <Image
           width={60}
           height={60}
+          className="rounded-lg size-16 object-cover"
           src={row.getValue("image")}
-          className="rounded-lg"
-          alt={row.getValue("name")}
+          alt={row.getValue(`name_${lang}`)}
         />
       </div>
     ),
   },
   {
     accessorKey: "is_active",
-    header: "Status",
+    header: t("status"),
+
     cell: ({ row }) => {
       const is_active = row.original.is_active.toString();
       return (
-        <Select
-          onValueChange={(value) => console.log(value)}
-          defaultValue={is_active}
-        >
-          <SelectTrigger className=" h-10 !border-gray-600">
-            <SelectValue placeholder={"active"} />
-          </SelectTrigger>
+        <div className="w-full flex items-center justify-center">
+          <div className="w-[200px]">
+            <Select
+              onValueChange={(value) => console.log(value)}
+              defaultValue={is_active.toString()}
+            >
+              <SelectTrigger className=" h-10 !border-gray-600">
+                <SelectValue placeholder={"active"} />
+              </SelectTrigger>
 
-          <SelectContent>
-            <SelectItem value="true">Active</SelectItem>
-            <SelectItem value="false">inActive</SelectItem>
-          </SelectContent>
-        </Select>
+              <SelectContent>
+                <SelectItem value="true">{t("active")}</SelectItem>
+                <SelectItem value="false">{t("inactive")}</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
       );
     },
   },
-  {
-    accessorKey: "created_at",
-    header: "Created At",
-    // cell: ({ value }) => new Date(value).toLocaleDateString("en-US")
-  },
+
   {
     accessorKey: "actions",
-    header: "Actions",
+    header: t("actions"),
     cell: ({ row }) => {
-      const id = row.original.id;
+      const category = row.original;
       return (
         <div className="flex items-center justify-center gap-2">
-          <Edit2 className="cursor-pointer" />
-
-          <Dialog>
-            <DialogTrigger asChild>
-              <Trash2 className="cursor-pointer text-destructive hover:text-red-900 transition-all duration-200" />
-            </DialogTrigger>
-            <DialogContent dir="rtl">
-              <DialogHeader>
-                <DialogTitle className=" text-center">
-                  {/* {t("delete.message")} */}
-                </DialogTitle>
-
-                <DialogDescription>
-                  {/* {t("delete.permanently_delete")} */}
-                </DialogDescription>
-
-                <div className="flex ltr:justify-end rtl:justify-start mt-4">
-                  <Image
-                    width={60}
-                    height={60}
-                    alt="tessss"
-                    src="https://placehold.co/60x60"
-                    className=" rounded-lg"
-                  />
-                </div>
-              </DialogHeader>
-              <DialogFooter className=" gap-2">
-                <DialogClose>Cancel</DialogClose>
-
-                <Button>confirm</Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
+          {/*  */}
+          <EditCategoryForm category={category} />
+          <DeleteCategory category={category} />
         </div>
       );
     },

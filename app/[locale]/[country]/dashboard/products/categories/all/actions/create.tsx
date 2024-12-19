@@ -9,7 +9,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import ImageUploader from "@/components/file-upload-with-preview";
-import Typography from "@/components/reusable/typography";
 import React, { useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -31,18 +30,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useToast } from "@/hooks/use-toast";
 import { useCreateCategoryMutation } from "@/redux/services/products/category-api";
 const createCategorySchema = z.object({
-  name: z.string().nonempty("Name is required"),
-  is_active: z.enum(["true", "false"]),
-  image: z
-    .custom<File[]>(
-      (file) => file instanceof File && file.size > 0,
-      "Invalid image format"
-    )
-    .optional(),
+  name_ar: z.string().min(1, "Name is required"),
+  name_en: z.string().min(1, "Name is required"),
+  is_active: z.boolean(),
+  image: z.custom<File[]>(),
 });
 
 type CreateCategoryInputs = z.infer<typeof createCategorySchema>;
@@ -53,8 +48,6 @@ export default function CreateCategoryForm() {
   const global = useTranslations("global");
   const res_status = useTranslations("res_status");
   const status = useTranslations("status");
-  // const locale = useLocale();
-  // const dir = getLangDir(locale);
   const [uploadedCategoryImage, setUploadedCategoryImage] = useState<File[]>(
     []
   );
@@ -63,8 +56,9 @@ export default function CreateCategoryForm() {
     resolver: zodResolver(createCategorySchema),
     mode: "onChange",
     defaultValues: {
-      name: "",
-      is_active: "false",
+      name_ar: "",
+      name_en: "",
+      is_active: true,
       image: undefined,
     },
   });
@@ -74,17 +68,24 @@ export default function CreateCategoryForm() {
     console.log("Updated Files:", files);
   };
   const onSubmitCreate = async (formData: CreateCategoryInputs) => {
-    formData = { ...formData, image: uploadedCategoryImage };
-    console.log("Create Category Data:", formData);
+    formData = {
+      ...formData,
+      image: uploadedCategoryImage,
+    };
     await createCategory(formData)
       .unwrap()
       .then(() => {
         toast({
           description: res_status("created_successfully"),
         });
-      }).catch((err)=>{
-        console.log(err)
+        createForm.reset();
+        handleFileChange([]);
       })
+      .catch((err) => {
+        toast({
+          description: err?.data?.message || "An error occurred!",
+        });
+      });
   };
 
   return (
@@ -103,7 +104,20 @@ export default function CreateCategoryForm() {
             className="space-y-4"
           >
             <FormField
-              name="name"
+              name="name_ar"
+              control={createForm.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("name")}</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="name_en"
               control={createForm.control}
               render={({ field }) => (
                 <FormItem>
@@ -123,8 +137,8 @@ export default function CreateCategoryForm() {
                 <FormItem>
                   <FormLabel>{status("status")}</FormLabel>
                   <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
+                    onValueChange={(value) => field.onChange(value === "true")}
+                    defaultValue={field.value?.toString()}
                   >
                     <FormControl>
                       <SelectTrigger>

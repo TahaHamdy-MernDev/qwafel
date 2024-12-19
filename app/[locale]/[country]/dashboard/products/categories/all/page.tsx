@@ -1,39 +1,24 @@
+"use client";
 import { DataTable } from "@/components/data-table";
 import AllCategoriesSearch from "../../_components/search/all-categories";
-import { columns, ICategory } from "./columns";
-async function getData(): Promise<ICategory[]> {
-  return [
-    {
-      id: 1,
-      name: "Category 1",
-      is_active: false,
-      created_at: "11/10/2024",
-      image: "https://placehold.co/60x60",
-    },
-    {
-      id: 2,
-      name: "Category 2",
-      is_active: true,
-      image: "https://placehold.co/60x60",
-      created_at: "11/10/2024",
-    },
-    {
-      id: 3,
-      name: "Category 3",
-      is_active: false,
-      image: "https://placehold.co/60x60",
-      created_at: "11/10/2024",
-    },
-    //... more categories here
-  ];
-}
-export default async function Page() {
-  const data = await getData();
+import { useGetCategoriesQuery } from "@/redux/services/products/category-api";
+import { useLocale, useTranslations } from "next-intl";
+import { getColumns } from "./columns";
+
+export default function Page() {
+  const t = useTranslations("Pages.Categories");
+  const lang = useLocale();
+  const columns = getColumns(t, lang);
+  const { data, isLoading } = useGetCategoriesQuery({ page: 1 });
+  if (isLoading) return <p>Loading...</p>;
+  const categories = data?.data || [];
+  console.log(categories);
   return (
     <div>
       <AllCategoriesSearch />
       {/* <AllCategoriesTable /> */}
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={columns} data={categories} />
+
     </div>
   );
 }

@@ -26,6 +26,9 @@ export function DataTable<TData, TValue>({
   const table = useReactTable({
     data,
     columns,
+    defaultColumn: {
+      maxSize: 100,
+    },
     getCoreRowModel: getCoreRowModel(),
   });
 

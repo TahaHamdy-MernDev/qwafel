@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Images } from "lucide-react";
 import Image from "./reusable/Image";
 import { cn } from "@/lib/utils";
@@ -10,23 +10,43 @@ interface ImageUploaderProps {
   max?: number;
   className?: string;
   onFileChange: (files: File[]) => void;
+  defaultImage?: string | string[];
 }
 
 const ImageUploader = ({
   onFileChange,
   multiple = true,
   className,
+  defaultImage,
   max = 10,
 }: ImageUploaderProps) => {
   const [uploadedImages, setUploadedImages] = useState<File[]>([]);
+  const [defaultImages, setDefaultImages] = useState<string[]>(
+    Array.isArray(defaultImage)
+      ? defaultImage
+      : defaultImage
+      ? [defaultImage]
+      : []
+  );
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    // Update default images when the prop changes
+    setDefaultImages(
+      Array.isArray(defaultImage)
+        ? defaultImage
+        : defaultImage
+        ? [defaultImage]
+        : []
+    );
+  }, [defaultImage]);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (files) {
       const newFiles = Array.from(files);
       const totalFiles = [...uploadedImages, ...newFiles];
-      if (totalFiles.length <= max) {
+      if (totalFiles.length + defaultImages.length <= max) {
         setUploadedImages(totalFiles);
         onFileChange(totalFiles);
       } else {
@@ -54,6 +74,16 @@ const ImageUploader = ({
     }
   };
 
+  const handleRemoveDefaultImage = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    index: number
+  ) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const updatedDefaultImages = defaultImages.filter((_, i) => i !== index);
+    setDefaultImages(updatedDefaultImages);
+  };
+
   const openFilePicker = (event: React.MouseEvent) => {
     event.preventDefault();
     if (fileInputRef.current) {
@@ -79,7 +109,7 @@ const ImageUploader = ({
           className
         )}
       >
-        {uploadedImages.length === 0 ? (
+        {uploadedImages.length === 0 && defaultImages.length === 0 ? (
           <button
             type="button"
             onClick={openFilePicker}
@@ -90,6 +120,24 @@ const ImageUploader = ({
           </button>
         ) : (
           <div className="p-2 grid grid-cols-3 gap-4">
+            {defaultImages.map((src, index) => (
+              <div key={`${src}-${index}`} className="relative group">
+                <Image
+                  width={140}
+                  height={140}
+                  src={src}
+                  alt="Default preview"
+                  className="w-full h-32 object-cover rounded-lg shadow-lg"
+                />
+                <button
+                  type="button"
+                  onClick={(event) => handleRemoveDefaultImage(event, index)}
+                  className="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  ×
+                </button>
+              </div>
+            ))}
             {uploadedImages.map((file, index) => (
               <div key={`${file.name}-${index}`} className="relative group">
                 <Image
@@ -108,7 +156,7 @@ const ImageUploader = ({
                 </button>
               </div>
             ))}
-            {uploadedImages.length < max && (
+            {uploadedImages.length + defaultImages.length < max && (
               <button
                 type="button"
                 onClick={openFilePicker}

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 html {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 html[dir="ltr"] {
   font-family: "Inter", serif;  

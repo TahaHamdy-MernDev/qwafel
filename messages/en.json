@@ -24,6 +24,7 @@
         "reset": "Reset",
         "cancel": "Cancel",
         "save": "Save",
+        "confirm": "Confirm",
         "edit": "Edit"
     },
     "res_status": {
@@ -233,12 +234,28 @@
     },
     "Pages": {
         "Categories": {
+            "status": "Status",
+            "active": "Active",
+            "inactive": "Inactive",
+            "edit_category": "Edit Category",
             "add_new_category": "Add New Category",
             "title": "All Categories",
             "add": "Add Category",
             "name": "Name",
             "code": "Code",
-            "create": "Create"
+            "date": "Date",
+            "create": "Create",
+            "name_ar": "Category Name in Arabic",
+            "name_en": "Category Name in English",
+            "delete_category": "Delete category",
+            "message": "Are you sure you want to delete {name}?",
+            "permanently_delete": "This action cannot be undone.",
+            "success_message": "Category deleted successfully.",
+            "error_message": "Failed to delete the category.",
+            "default_image_alt": "Category image",
+            "cancel": "Cancel",
+            "actions":"Actions",
+            "confirm": "Confirm"
         },
         "Sizes": {
             "sizes": "Sizes",

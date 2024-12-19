@@ -72,7 +72,7 @@ export function DashboardLayout({
           </div>
           {/* <NavUser user={data.user} /> */}
         </header>
-        <div className="container mt-6">{children}</div>
+        <div className="container my-6">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

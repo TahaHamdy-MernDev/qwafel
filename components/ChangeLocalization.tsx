@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { Globe } from "lucide-react";
 import { useLocale } from "next-intl";
 import { routing, usePathname, useRouter } from "@/i18n/routing";
-
+import Cookies from "js-cookie";
 interface ChangeLocalizationProps {
   className?: string;
 }
@@ -24,18 +24,15 @@ const ChangeLocalization: React.FC<ChangeLocalizationProps> = ({
   const changeLocale = (newLocale: string) => {
     if (newLocale === currentLocale) return;
     const newPath = pathname.replace(`/${currentLocale}`, `/${newLocale}`);
-
+    Cookies.set("lang", newLocale);
     router.replace(newPath, { locale: newLocale });
   };
 
   return (
     <div className={cn(className)}>
       <DropdownMenu>
-        <DropdownMenuTrigger className=" p-2 active:outline-none focus-visible:!outline-none focus-visible:border-none active:border-none">
+        <DropdownMenuTrigger className="bg-gray-200 rounded-full p-2 active:outline-none focus-visible:!outline-none focus-visible:border-none active:border-none">
           <span className="flex items-center justify-center gap-1">
-            {/* <span className="font-semibold">
-              {currentLocale === "ar" ? "العربية" : "English"}
-            </span>  */}
             <Globe />
           </span>
         </DropdownMenuTrigger>
