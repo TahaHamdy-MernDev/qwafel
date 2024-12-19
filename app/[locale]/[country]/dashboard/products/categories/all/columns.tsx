@@ -19,7 +19,7 @@ interface ICategory {
   name_en: string;
   is_active: boolean;
   image?: string;
-  createdAt?: string;
+  createdAt: string;
   updated_at?: string;
 }
 export const getColumns = (
@@ -48,7 +48,7 @@ export const getColumns = (
           width={60}
           height={60}
           className="rounded-lg size-16 object-cover"
-          src={row.getValue("image")}
+          src={row.getValue("image") ?? null}
           alt={row.getValue(`name_${lang}`)}
         />
       </div>

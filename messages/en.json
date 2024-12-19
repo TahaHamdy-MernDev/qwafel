@@ -25,7 +25,9 @@
         "cancel": "Cancel",
         "save": "Save",
         "confirm": "Confirm",
-        "edit": "Edit"
+        "edit": "Edit",
+        "in_ar": "{name} in Arabic",
+        "in_en": "{name} in English"
     },
     "res_status": {
         "created_successfully": "Created Successfully",
@@ -254,7 +256,7 @@
             "error_message": "Failed to delete the category.",
             "default_image_alt": "Category image",
             "cancel": "Cancel",
-            "actions":"Actions",
+            "actions": "Actions",
             "confirm": "Confirm"
         },
         "Sizes": {

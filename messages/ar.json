@@ -25,7 +25,9 @@
         "search": "بحث",
         "reset": "حذف",
         "confirm": "تاكيد",
-        "disagree": "غير موافق"
+        "disagree": "غير موافق",
+        "in_ar": "{name} بالعربية",
+        "in_en": "{name} بالانجليزية"
     },
     "res_status": {
         "created_successfully": "تم الانشاء بنجاح",
@@ -250,8 +252,8 @@
             "success_message": "تم حذف التصنيف بنجاح.",
             "error_message": "فشل في حذف التصنيف.",
             "default_image_alt": "صورة القسم",
-            "date":"التاريخ",
-            "actions":"اجراءات",
+            "date": "التاريخ",
+            "actions": "اجراءات",
             "cancel": "إلغاء",
             "confirm": "تأكيد"
         },

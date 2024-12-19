@@ -7,11 +7,10 @@ import { useGetSizesQuery } from "@/redux/services/products/sizes-api";
 
 export default function Page() {
   const t = useTranslations("Pages.Sizes");
-  const { data, isLoading } = useGetSizesQuery();
+  const { data, isLoading } = useGetSizesQuery({ page: 1 });
   if (isLoading) return <p>Loading...</p>;
   const sizes = data?.data;
   const columns = getColumns(t);
-  // const data = await getData();
   return (
     <section className="container">
       <Header />

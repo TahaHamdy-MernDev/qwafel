@@ -67,15 +67,15 @@ export const categoryApi = createApi({
 
     getCategoryById: builder.query<ICategory, number>({
       query: (id) => `/category/${id}`,
-      transformResponse: (response: { data: ICategory }) => {
-        const category = response.data;
-        return {
-          ...category,
-          image: category.image?.startsWith("http")
-            ? category.image
-            : `${process.env.NEXT_PUBLIC_API_URL}/${category.image}`,
-        };
-      },
+      // transformResponse: (response: { data: ICategory }) => {
+      //   const category = response.data;
+      //   return {
+      //     ...category,
+      //     image: category.image?.startsWith("http")
+      //       ? category.image
+      //       : `${process.env.NEXT_PUBLIC_API_URL}/${category.image}`,
+      //   };
+      // },
       providesTags: (result, error, id) => [{ type: "Category", id }],
     }),
 

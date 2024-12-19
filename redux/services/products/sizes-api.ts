@@ -10,17 +10,20 @@ interface CreateSizePayload {
   name: string;
 }
 interface GetSizesResponse {
-    data: ISize[];
-  }
-  
+  data: ISize[];
+}
+
 export const sizeApi = createApi({
   reducerPath: "sizeApi",
   baseQuery: baseQuery,
   tagTypes: ["Size"],
 
   endpoints: (builder) => ({
-    getSizes: builder.query<GetSizesResponse, void>({
-      query: () => "/size/1",
+    getSizes: builder.query<GetSizesResponse, { page?: number }>({
+      query: ({ page = 1 }) => ({
+        url: "/size",
+        params: { page },
+      }),
       providesTags: ["Size"],
     }),
     getSizeById: builder.query<ISize, number>({

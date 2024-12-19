@@ -3,11 +3,13 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 
 interface IColor {
   id: number;
-  name: string;
+  name_ar: string;
+  name_en: string;
 }
 
 interface CreateColorPayload {
-  name: string;
+  name_ar: string;
+  name_en: string;
 }
 interface GetColorsResponse {
   data: IColor[];
@@ -19,9 +21,21 @@ export const colorApi = createApi({
   tagTypes: ["Color"],
 
   endpoints: (builder) => ({
-    getColors: builder.query<GetColorsResponse, void>({
-      query: () => "/color/1",
-      providesTags: ["Color"],
+    getColors: builder.query<GetColorsResponse, { page?: number }>({
+      query: ({ page = 1 }) => ({
+        url: "/color",
+        params: { page },
+      }),
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.data.map(({ id }) => ({
+                type: "Color" as const,
+                id,
+              })),
+              { type: "Color" as const, id: "LIST" },
+            ]
+          : [{ type: "Color" as const, id: "LIST" }],
     }),
     getColorById: builder.query<IColor, number>({
       query: (id) => `/color/${id}`,
@@ -33,7 +47,7 @@ export const colorApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Color"],
+      invalidatesTags: [{ type: "Color", id: "LIST" }],
     }),
     updateColor: builder.mutation<
       IColor,

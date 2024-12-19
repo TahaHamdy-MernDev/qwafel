@@ -29,7 +29,8 @@ import { z } from "zod";
 import { useCreateColorMutation } from "@/redux/services/products/colors-api";
 import { useToast } from "@/hooks/use-toast";
 const createSize = z.object({
-  name: z.string().min(1).max(20),
+  name_ar: z.string().min(1).max(20),
+  name_en: z.string().min(1).max(20),
 });
 type formInputs = z.infer<typeof createSize>;
 
@@ -42,7 +43,7 @@ const Header: React.FC = () => {
   const createForm = useForm<formInputs>({
     resolver: zodResolver(createSize),
     mode: "onChange",
-    defaultValues: { name: "" },
+    defaultValues: { name_en: "", name_ar: "" },
   });
   const onSubmitCreate = async (data: formInputs) => {
     console.log("Form submitted with data:", data);
@@ -75,11 +76,26 @@ const Header: React.FC = () => {
               className="space-y-4"
             >
               <FormField
-                name="name"
+                name="name_ar"
                 control={createForm.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("name")}</FormLabel>
+                    <FormLabel>
+                      {global("in_ar", { name: t("name") })}
+                    </FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                name="name_en"
+                control={createForm.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel> {global("in_en", { name: t("name") })}</FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
@@ -88,9 +104,11 @@ const Header: React.FC = () => {
                 )}
               />
               <DialogFooter>
-                <Button type="submit" isLoading={isLoading}>{global("create")}</Button>
+                <Button type="submit" isLoading={isLoading}>
+                  {global("create")}
+                </Button>
                 <DialogClose asChild>
-                  <Button type="button" variant="outline">
+                  <Button type="button" variant="outline" disabled={isLoading} onClick={()=>createForm.reset()}>
                     {global("cancel")}
                   </Button>
                 </DialogClose>
