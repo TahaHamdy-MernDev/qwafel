@@ -4,7 +4,7 @@ import { usePathname } from "@/i18n/routing";
 const useCountry = () => {
   const router = usePathname();
   let country = null;
-  const match = RegExp(/\/(sa|ae)/).exec(router);
+  const match = RegExp(/\/(sa|ae|eg)/).exec(router);
   if (match) {
     country = match[1];
   }

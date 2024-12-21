@@ -105,7 +105,7 @@ const ImageUploader = ({
 
       <div
         className={cn(
-          "cursor-pointer flex justify-center items-center max-w-lg min-h-[15rem] p-4 border border-primary rounded-lg bg-transparent transition",
+          "cursor-pointer flex justify-start items-start max-w-lg min-h-[15rem] p-4 border border-primary rounded-lg bg-transparent transition",
           className
         )}
       >
@@ -119,7 +119,7 @@ const ImageUploader = ({
             <p>Click to upload images</p>
           </button>
         ) : (
-          <div className="p-2 grid grid-cols-3 gap-4">
+          <div className="p-2 grid grid-cols-4 gap-4">
             {defaultImages.map((src, index) => (
               <div key={`${src}-${index}`} className="relative group">
                 <Image

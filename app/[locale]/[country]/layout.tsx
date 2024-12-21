@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-const allowedCountry= ["sa", "ae"]
+const allowedCountry= ["sa", "ae","eg"]
 export default async function Layout({
   children,
   params,

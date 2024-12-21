@@ -1,34 +1,23 @@
-import { getTranslations } from "next-intl/server";
-import { getColumns, IWarehouse } from "./columns";
+"use client";
+import { useGetWarehousesQuery } from "@/redux/services/inventory/warehouses-api";
+import { getColumns } from "./columns";
 import Header from "./header";
 import { DataTable } from "@/components/data-table";
-async function getData(): Promise<IWarehouse[]>{
-return[
-    {
-      id: 1,
-      name: "Warehouse 1",
-      created_at: "11/10/2024",
-      country:"عمان"
-    },
-    {
-      id: 2,
-      name: "Warehouse 2",
-      created_at: "11/10/2024",
-      country:"المملكة المغربية"
-    
-    },
-  ];
+import { useTranslations } from "next-intl";
+import useCountry from "@/hooks/use-country";
 
-}
-
-export default async function Page() {
-    const data = await getData();
-    const t =await getTranslations("Pages.Inventory")
-    const columns= getColumns(t)
+export default function Page() {
+  const country= useCountry()
+  const { data, isLoading } = useGetWarehousesQuery({ page: 1 , country});
+  const t = useTranslations("Pages.Inventory");
+  if (isLoading) return <div>loading...</div>;
+  const warehouses = data?.data || [];
+  const columns = getColumns(t);
+  console.log(data)
   return (
     <section>
       <Header />
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={columns} data={warehouses} />
     </section>
   );
 }

@@ -11,8 +11,8 @@ import {
 } from "@/components/ui/dialog";
 import { Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button"; // Adjusted Button import for proper usage
+import React from "react";
+import { Button } from "@/components/ui/button"; 
 import { useDeleteCategoryMutation } from "@/redux/services/products/category-api";
 import { useToast } from "@/hooks/use-toast";
 

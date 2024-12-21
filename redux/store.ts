@@ -5,6 +5,8 @@ import { sizeApi } from "./services/products/sizes-api";
 import { createWrapper } from "next-redux-wrapper";
 import { colorApi } from "./services/products/colors-api";
 import { categoryApi } from "./services/products/category-api";
+import { productApi } from "./services/products/products-api";
+import { warehousesApi } from "./services/inventory/warehouses-api";
 export const makeStore = (preloadedState = {}) =>
   configureStore({
     reducer: {
@@ -13,6 +15,8 @@ export const makeStore = (preloadedState = {}) =>
       [sizeApi.reducerPath]: sizeApi.reducer,
       [colorApi.reducerPath]: colorApi.reducer,
       [categoryApi.reducerPath]: categoryApi.reducer,
+      [productApi.reducerPath]: productApi.reducer,
+      [warehousesApi.reducerPath]: warehousesApi.reducer,
     },
     preloadedState,
     middleware: (getDefaultMiddleware) =>
@@ -20,7 +24,9 @@ export const makeStore = (preloadedState = {}) =>
         authApi.middleware,
         sizeApi.middleware,
         colorApi.middleware,
-        categoryApi.middleware
+        categoryApi.middleware,
+        productApi.middleware,
+        warehousesApi.middleware
       ),
   });
 // Infer the `RootState` and `AppDispatch` types

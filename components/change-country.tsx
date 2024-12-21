@@ -24,6 +24,7 @@ const ChangeCountry: React.FC = () => {
   const country = [
     { code: "ae", src: "/images/ae.svg" },
     { code: "sa", src: "/images/sa.svg" },
+    { code: "eg", src: "/images/sa.svg" },
   ];
   return (
     <div>

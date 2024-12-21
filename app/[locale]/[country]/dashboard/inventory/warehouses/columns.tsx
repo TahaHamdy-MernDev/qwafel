@@ -1,12 +1,9 @@
+import { formatDateTime } from "@/common/format-date";
+import { IWarehouse } from "@/redux/services/inventory/warehouses-api";
 import { ColumnDef } from "@tanstack/react-table";
 import { useTranslations } from "next-intl";
-
-export interface IWarehouse {
-  id?: string | number;
-  name: string;
-  country: string;
-  created_at?: string;
-}
+import EditWarehouse from "./actions/edit-warehouse";
+import DeleteWarehouse from "./actions/delete-warehouse";
 
 export const getColumns = (
   t: ReturnType<typeof useTranslations>
@@ -21,11 +18,20 @@ export const getColumns = (
     accessorKey: "name",
   },
   {
-    header: t("country"),
-    accessorKey: "country",
+    header: t("date"),
+    accessorKey: "createdAt",
+    cell: ({ row }) =>
+      row.original.createdAt ? formatDateTime(row.original.createdAt) : "",
   },
   {
-    header: t("date"),
-    accessorKey: "created_at",
+    header: t("actions"),
+    accessorKey: "actions",
+    cell: ({ row }) => (
+      <div className="flex items-center justify-center gap-2">
+        <EditWarehouse warehouse={row.original} />
+          <DeleteWarehouse warehouse={row.original} />
+      </div>
+    ),
   },
+
 ];
