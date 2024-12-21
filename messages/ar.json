@@ -14,12 +14,27 @@
         }
     },
     "global": {
+        "upload_image": "اضف صوره ",
+        "upload_images": "اضف صور ",
         "choose": "اختر",
-        "reset": "ا��ادة تعيين",
-        "submit": "��رسال",
-        "cancel": "��لغا��",
+        "add_new": "اضافه",
+        "submit": "ارسال",
+        "create": "انشاء",
         "agree": "موافق",
-        "disagree": "غير موافق"
+        "edit": "تعديل",
+        "save_changes": "حفظ التغييرات",
+        "cancel": "إلغاء",
+        "search": "بحث",
+        "reset": "حذف",
+        "confirm": "تاكيد",
+        "disagree": "غير موافق",
+        "in_ar": "{name} بالعربية",
+        "in_en": "{name} بالانجليزية"
+    },
+    "res_status": {
+        "created_successfully": "تم الانشاء بنجاح",
+        "updated_successfully": "تم التحديث بنجاح",
+        "deleted_successfully": "تم الحذف بنجاح"
     },
     "Validation": {
         "auth": {
@@ -51,6 +66,10 @@
                 "min": "يجب أن يتكون رقم الهاتف من {minLength} أرقام على الأقل",
                 "max": "لا يمكن أن يتجاوز رقم الهاتف {maxLength} أرقام"
             }
+        },
+        "Categories": {
+            "required": "اسم القسم مطلوب",
+            "invalid": "قم باختيار قسم صالح"
         }
     },
     "Auth": {
@@ -166,6 +185,8 @@
         }
     },
     "Products": {
+        "meta_description": " وصف قصير للموقع يساعد محركات البحث في التعرف على محتوى الصفحة وتحسين ظهورها في نتائج البحث.",
+        "product_img": "صورة المنتج",
         "add_product": "إضافة منتج",
         "create_new_product": "انشاء منتج جديد",
         "title": "اسم المنتج",
@@ -175,6 +196,12 @@
         "description": "وصف المنتج",
         "all_products": "كل المنتجات",
         "create": "انشاء",
+        "delete": {
+            "message": "هل أنت متأكد من حذف المنتج؟",
+            "permanently_delete": " لا يمكن التراجع عن هذا الإجراء. سيتم حذف المنتج نهائيًا",
+            "confirm": "نعم",
+            "cancel": "إلغاء"
+        },
         "code": "الكود",
         "category": "القسم",
         "user_code": "كود المستخدم",
@@ -189,7 +216,12 @@
         "system_commission": "ربحية الشركه",
         "product_sku": "SKU",
         "column": {
+            "status": "الحاله",
+            "active": "نشط",
+            "inactive": "غير نشط",
             "date": "التاريخ",
+            "thumbnail": "الصورة المصغرة ",
+            "quantity": "الكمية",
             "product": "المنتج",
             "price": "السعر",
             "current_stock": "الاستوك الحالي",
@@ -208,5 +240,60 @@
     "HomePage": {
         "title": "اهلا!",
         "about": "Go to the about page"
+    },
+    "Pages": {
+        "Categories": {
+            "status": "الحاله",
+            "active": "نشط",
+            "inactive": "غير نشط",
+            "edit_category": "تعديل القسم",
+            "add_new_category": " اضافة قسم جديد",
+            "title": "الاقسام",
+            "add": "اضافة قسم",
+            "name": "اسم القسم",
+            "code": "الكود",
+            "create": "انشاء",
+            "name_ar": "اسم القسم بالعربية",
+            "name_en": "اسم القسم بالانجليزية",
+            "delete_category": "حذف التصنيف",
+            "message": "هل أنت متأكد أنك تريد حذف {name}؟",
+            "permanently_delete": "هذا الإجراء لا يمكن التراجع عنه.",
+            "success_message": "تم حذف التصنيف بنجاح.",
+            "error_message": "فشل في حذف التصنيف.",
+            "default_image_alt": "صورة القسم",
+            "date": "التاريخ",
+            "actions": "اجراءات",
+            "cancel": "إلغاء",
+            "confirm": "تأكيد"
+        },
+        "Sizes": {
+            "sizes": "المقاسات",
+            "add_new_size": "اضافة مقاس جديد",
+            "name": "المقاس"
+        },
+        "Colors": {
+            "Colors": "الألوان",
+            "add_new_color": "اضافة لون جديد",
+            "name": "اللون"
+        },
+        "Inventory": {
+            "delete_warehouse": "حذف المخزن",
+            "delete_confirmation": "هل أنت متأكد أنك تريد حذف هذا المخزن؟",
+            "edit_warehouse": "تعديل المخزن",
+            "name": "الاسم",
+            "inventory": "المخزون",
+            "warehouses": "المخازن",
+            "add_new_warehouse": "اضافة مخزن جديد",
+            "country": "الدوله",
+            "date": "التاريخ",
+            "edit": "تعديل",
+            "actions":"اجراءات",
+            "delete": "حذف"
+        }
+    },
+    "status": {
+        "status": "الحاله",
+        "active": "نشط",
+        "inactive": "غير نشط"
     }
 }

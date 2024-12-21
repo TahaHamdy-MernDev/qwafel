@@ -14,6 +14,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "placehold.co",
       },
+      {
+        protocol: "https",
+        hostname: "sgp1.digitaloceanspaces.com",
+      },
+      {
+        protocol: "http",
+        hostname: "143.110.230.81",
+      }
     ],
   },
   typescript: {

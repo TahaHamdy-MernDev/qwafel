@@ -192,7 +192,7 @@ export const sidebarLinks = ({
         },
         {
           title: t("products.category"),
-          url: "/products/categories",
+          url: "/products/categories/all",
           isVisible: true,
         },
         {
@@ -271,7 +271,7 @@ export const sidebarLinks = ({
       url: "/inventory",
       icon: CircleDollarSign, // Replace with an appropriate icon
       isActive: false,
-      isVisible: false,
+      isVisible: true,
       items: [
         {
           title: t("inventory.warehouses"),

@@ -9,6 +9,19 @@ export default {
   ],
   theme: {
     extend: {
+      container: {
+        center: true, 
+        padding: {
+          DEFAULT: '1rem', 
+        },
+        screens: {
+          sm: '100%',
+          md: '768px', 
+          lg: '1024px', 
+          xl: '1280px',
+          '2xl': '1440px', 
+        },
+      },
       colors: {
         background: "var(--color-purple-bg)",
         foreground: "hsl(var(--foreground))",
@@ -28,7 +41,7 @@ export default {
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "hsl(var(--color-soft-blue))",
           foreground: "hsl(var(--secondary-foreground))",
         },
         gray: {

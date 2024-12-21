@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 html {
-  -webkit-text-size-adjust: 100%;
+  /* overflow: hidden; */
 }
 html[dir="ltr"] {
   font-family: "Inter", serif;  
@@ -21,6 +21,8 @@ html[dir="rtl"] {
   :root {
     /* #f26f54 */
     --color-orange-prime: 5, 86%, 64%;
+    --color-soft-blue:210, 50%, 60%;
+    /* --color-orange-prime: 5, 86%, 64%; */
     /* color: hsl(5, 86%, 63%); */
     --color-orange-prime-hover: hsla(10, 86%, 64%, 0.9);
     --color-orange-sidebar: hsl(9, 62%, 60%);
@@ -160,8 +162,8 @@ html[dir="rtl"] {
 
 /* custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 0px;
+  height: 0px;
 }
 ::-webkit-scrollbar-track {
   background: white;

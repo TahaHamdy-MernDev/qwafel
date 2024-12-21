@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getLangDir } from "rtl-detect";
 import StoreProvider from "@/providers/StoreProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,7 +43,9 @@ export default async function LocaleLayout({
       <body className={`${din.variable} ${inter.variable} antialiased`}>
         <StoreProvider>
           <NextIntlClientProvider messages={messages}>
-            {children}
+         
+             {children}
+             <Toaster />
           </NextIntlClientProvider>
         </StoreProvider>
       </body>
