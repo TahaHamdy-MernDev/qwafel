@@ -1,4 +1,4 @@
-import { CircleDollarSign, LayoutDashboard } from "lucide-react";
+import { Boxes, CircleDollarSign, LayoutDashboard } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { AiOutlineProduct } from "react-icons/ai";
 import { GrAnalytics } from "react-icons/gr";
@@ -269,7 +269,7 @@ export const sidebarLinks = ({
     {
       title: t("inventory.inventory"),
       url: "/inventory",
-      icon: CircleDollarSign, // Replace with an appropriate icon
+      icon: Boxes, 
       isActive: false,
       isVisible: true,
       items: [
@@ -281,7 +281,7 @@ export const sidebarLinks = ({
         {
           title: t("inventory.product_stock"),
           url: "/inventory/product-stock",
-          isVisible: true,
+          isVisible: false,
         },
         {
           title: t("inventory.variant_stock"),
@@ -295,7 +295,7 @@ export const sidebarLinks = ({
       url: "/purchases",
       icon: CircleDollarSign,
       isActive: false,
-      isVisible: false,
+      isVisible: true,
       items: [
         {
           title: t("purchases.suppliers"),
