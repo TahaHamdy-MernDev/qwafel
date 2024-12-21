@@ -281,7 +281,7 @@ export const sidebarLinks = ({
         {
           title: t("inventory.product_stock"),
           url: "/inventory/product-stock",
-          isVisible: true,
+          isVisible: false,
         },
         {
           title: t("inventory.variant_stock"),
