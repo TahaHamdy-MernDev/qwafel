@@ -1,26 +1,25 @@
 "use client";
-import { useGetWarehousesQuery } from "@/redux/services/inventory/warehouses-api";
-import { getColumns } from "./columns";
-import Header from "./header";
 import { DataTable } from "@/components/data-table";
+import { getColumns } from "./columns";
 import { useTranslations } from "next-intl";
+import { useGetSuppliersQuery } from "@/redux/services/purchases/suppliers-api";
 import useCountry from "@/hooks/use-country";
+import Header from "./header";
 
 export default function Page() {
   const country = useCountry();
-  const { data, isLoading } = useGetWarehousesQuery({
-    page: 1,
+  const { data, isLoading } = useGetSuppliersQuery({
     country: country ?? undefined,
+    page: 1,
   });
   const t = useTranslations("Pages.Inventory");
-  if (isLoading) return <div>loading...</div>;
-  const warehouses = data?.data || [];
+  if (isLoading) return <p>Loading.....</p>;
+  const suppliers = data?.data || [];
   const columns = getColumns(t);
-  console.log(data);
   return (
     <section>
       <Header />
-      <DataTable columns={columns} data={warehouses} />
+      <DataTable data={suppliers} columns={columns} />
     </section>
   );
 }

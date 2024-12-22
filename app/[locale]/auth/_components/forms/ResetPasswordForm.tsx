@@ -3,6 +3,9 @@ import ChangeLocalization from "@/components/ChangeLocalization";
 import Image from "@/components/reusable/Image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "@/i18n/routing";
+import { useResetPasswordMutation } from "@/redux/services/authApi";
 import { getResetPasswordSchema } from "@/schemas/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff, LockKeyhole } from "lucide-react";
@@ -17,21 +20,35 @@ interface IResetPasswordForm {
 type ResetPasswordInputs = z.infer<ReturnType<typeof getResetPasswordSchema>>;
 
 const ResetPasswordForm: React.FC<IResetPasswordForm> = ({ token }) => {
+  const { toast } = useToast();
+  const [resetPassword, { isLoading }] = useResetPasswordMutation();
   const [showPassword, setShowPassword] = React.useState<boolean>(false);
   console.log(token);
   const t = useTranslations("Auth.reset_password");
   const schema = getResetPasswordSchema(useTranslations("Validation.auth"));
-
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     clearErrors,
+    reset,
     formState: { errors },
   } = useForm<ResetPasswordInputs>({
     resolver: zodResolver(schema),
   });
 
   const onSubmit = async (data: ResetPasswordInputs) => {
+    data = { ...data, token };
+    await resetPassword(data)
+      .unwrap()
+      .then(() => {
+        toast({
+          description: "success",
+        });
+        clearErrors();
+        reset();
+        router.push("/auth/login");
+      });
     console.log("Form submitted successfully:", data);
   };
 
@@ -72,7 +89,9 @@ const ResetPasswordForm: React.FC<IResetPasswordForm> = ({ token }) => {
         errorMessage={errors.confirm_password?.message}
         clearFieldError={() => clearErrors("confirm_password")}
       />
-      <Button type="submit">{t("submit")}</Button>
+      <Button type="submit" isLoading={isLoading}>
+        {t("submit")}
+      </Button>
     </form>
   );
 };

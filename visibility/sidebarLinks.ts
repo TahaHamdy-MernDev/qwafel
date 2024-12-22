@@ -304,7 +304,7 @@ export const sidebarLinks = ({
         },
         {
           title: t("purchases.stock_movement"),
-          url: "/purchases/stock-movement",
+          url: "/purchases/stock-logs",
           isVisible: true,
         },
       ],

@@ -12,17 +12,17 @@ export const getColumns = (
     header: "#",
     accessorKey: "id",
   },
-
-  {
-    header: t("name"),
-    accessorKey: "name",
-  },
   {
     header: t("date"),
     accessorKey: "createdAt",
     cell: ({ row }) =>
       row.original.createdAt ? formatDateTime(row.original.createdAt) : "",
   },
+  {
+    header: t("name"),
+    accessorKey: "name",
+  },
+  
   {
     header: t("actions"),
     accessorKey: "actions",

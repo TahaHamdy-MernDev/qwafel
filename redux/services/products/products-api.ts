@@ -79,8 +79,8 @@ export const productApi = createApi({
         formData.append("external_url", payload.external_url);
         formData.append("meta_description", payload.meta_description);
         formData.append("thumbnail", payload.thumbnail[0]);
-        payload.images.forEach((image, index) => {
-          formData.append(`images[${index}]`, image);
+        payload.images.forEach((image) => {
+          formData.append(`images`, image);
         });
         const { country } = params;
         return {

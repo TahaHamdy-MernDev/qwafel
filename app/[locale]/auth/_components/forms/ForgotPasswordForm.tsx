@@ -5,6 +5,8 @@ import Link from "@/components/reusable/Link";
 import { Button } from "@/components/ui/button";
 
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+import { useForgotPasswordMutation } from "@/redux/services/authApi";
 import { getForgotPasswordSchema } from "@/schemas/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -17,12 +19,22 @@ import { z } from "zod";
 type ForgotPasswordInputs = z.infer<ReturnType<typeof getForgotPasswordSchema>>;
 
 const ForgotPasswordForm: React.FC = () => {
+  const { toast } = useToast();
+  const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
   const t = useTranslations("Auth.forgot_password");
   const schema = getForgotPasswordSchema(useTranslations("Validation.auth"));
   const { register, handleSubmit } = useForm<ForgotPasswordInputs>({
     resolver: zodResolver(schema),
   });
   const onSubmit = async (formData: ForgotPasswordInputs) => {
+    await forgotPassword(formData)
+      .unwrap()
+      .then(() => {
+        toast({
+          description: "please check your email",
+        });
+      });
+
     console.log(formData);
   };
   return (
@@ -40,9 +52,9 @@ const ForgotPasswordForm: React.FC = () => {
         {...register("email")}
       />
       <div className=" hidden">{t("reset_password_sent")}</div>
-      <Button type="submit">{t("submit")}</Button>
+      <Button type="submit" isLoading={isLoading}>{t("submit")}</Button>
       <Button className=" bg-white border hover:bg-transparent">
-        <Link href={"/auth/login"} className=" text-black no-underline">
+        <Link href={"/auth/login"} className=" text-black no-underline" >
           {t("back")}
         </Link>
       </Button>

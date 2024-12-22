@@ -25,11 +25,14 @@
         "save_changes": "حفظ التغييرات",
         "cancel": "إلغاء",
         "search": "بحث",
+        "update": "تحديث",
         "reset": "حذف",
         "confirm": "تاكيد",
         "disagree": "غير موافق",
         "in_ar": "{name} بالعربية",
-        "in_en": "{name} بالانجليزية"
+        "in_en": "{name} بالانجليزية",
+        "ar": "العربية",
+        "en": "الانجليزية"
     },
     "res_status": {
         "created_successfully": "تم الانشاء بنجاح",
@@ -287,8 +290,38 @@
             "country": "الدوله",
             "date": "التاريخ",
             "edit": "تعديل",
-            "actions":"اجراءات",
+            "actions": "اجراءات",
             "delete": "حذف"
+        },
+        "Purchases": {
+            "suppliers": "الموردين",
+            "add_new_supplier": "اضافة مورد جديد",
+            "name": "اسم المورد",
+            "date": "التاريخ",
+            "edit": "تعديل",
+            "actions": "اجراءات",
+            "delete": "حذف",
+            "delete_supplier": "حذف المورد",
+            "delete_confirmation": "هل أنت متأكد أنك تريد حذف هذا المورد؟",
+            "edit_supplier": "تعديل المورد",
+            "payable": "المديونيه"
+        },
+        "variant_stock": {
+            "variant_stock": "مخزون المتغيرات",
+            "add_new_variant": "اضافة متغير جديد",
+            "name": "اسم المتغير",
+            "title": "المتغيرات",
+            "date": "التاريخ",
+            "edit": "تعديل",
+            "actions": "اجراءات",
+            "delete": "حذف",
+            "delete_variant": "حذف المتغير",
+            "delete_confirmation": "هل أنت متأكد أنك تريد حذف هذا المتغير؟",
+            "edit_variant": "تعديل المتغير",
+            "quantity": "الكمية",
+            "product": "المنتج",
+            "price": "السعر",
+            "current_stock": "الاستوك الحالي"
         }
     },
     "status": {
