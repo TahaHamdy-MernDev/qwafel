@@ -28,7 +28,7 @@ interface IParams {
 }
 interface IWarehousesResponse {
   data: IWarehouse[];
-  total: number;
+  count: number;
 }
 interface IGetWarehousesQueryParams {
   country?: string;

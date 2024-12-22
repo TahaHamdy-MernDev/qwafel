@@ -7,6 +7,7 @@ import { colorApi } from "./services/products/colors-api";
 import { categoryApi } from "./services/products/category-api";
 import { productApi } from "./services/products/products-api";
 import { warehousesApi } from "./services/inventory/warehouses-api";
+import { supplierApi } from "./services/purchases/suppliers-api";
 export const makeStore = (preloadedState = {}) =>
   configureStore({
     reducer: {
@@ -17,6 +18,7 @@ export const makeStore = (preloadedState = {}) =>
       [categoryApi.reducerPath]: categoryApi.reducer,
       [productApi.reducerPath]: productApi.reducer,
       [warehousesApi.reducerPath]: warehousesApi.reducer,
+      [supplierApi.reducerPath]: supplierApi.reducer,
     },
     preloadedState,
     middleware: (getDefaultMiddleware) =>
@@ -26,7 +28,8 @@ export const makeStore = (preloadedState = {}) =>
         colorApi.middleware,
         categoryApi.middleware,
         productApi.middleware,
-        warehousesApi.middleware
+        warehousesApi.middleware,
+        supplierApi.middleware
       ),
   });
 // Infer the `RootState` and `AppDispatch` types

@@ -14,9 +14,9 @@ export async function generateMetadata({
 }
 export default async function Page({
   params,
-}: {
+}: Readonly<{
   params: Promise<{ token: string }>;
-}) {
+}>) {
   const { token } = await params;
   console.log(token);
   return <ResetPasswordForm  token={token}/>;

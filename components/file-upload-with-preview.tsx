@@ -11,6 +11,7 @@ interface ImageUploaderProps {
   className?: string;
   onFileChange: (files: File[]) => void;
   defaultImage?: string | string[];
+  imageContainerClass?: string;
 }
 
 const ImageUploader = ({
@@ -18,6 +19,7 @@ const ImageUploader = ({
   multiple = true,
   className,
   defaultImage,
+  imageContainerClass,
   max = 10,
 }: ImageUploaderProps) => {
   const [uploadedImages, setUploadedImages] = useState<File[]>([]);
@@ -87,7 +89,7 @@ const ImageUploader = ({
   const openFilePicker = (event: React.MouseEvent) => {
     event.preventDefault();
     if (fileInputRef.current) {
-      fileInputRef.current.value = ""; // Reset before opening
+      fileInputRef.current.value = "";
       fileInputRef.current.click();
     }
   };
@@ -105,7 +107,7 @@ const ImageUploader = ({
 
       <div
         className={cn(
-          "cursor-pointer flex justify-start items-start max-w-lg min-h-[15rem] p-4 border border-primary rounded-lg bg-transparent transition",
+          "cursor-pointer flex justify-start items-center max-w-lg min-h-[10rem]  border border-primary rounded-lg bg-transparent transition",
           className
         )}
       >
@@ -119,15 +121,17 @@ const ImageUploader = ({
             <p>Click to upload images</p>
           </button>
         ) : (
-          <div className="p-2 grid grid-cols-4 gap-4">
+          <div
+            className={cn("p-2 grid grid-cols-4 gap-4", imageContainerClass)}
+          >
             {defaultImages.map((src, index) => (
-              <div key={`${src}-${index}`} className="relative group">
+              <div key={`${src}-${index}`} className="relative group w-full h-full flex items-center justify-center">
                 <Image
                   width={140}
                   height={140}
                   src={src}
                   alt="Default preview"
-                  className="w-full h-32 object-cover rounded-lg shadow-lg"
+                  className="w-full h-32 object-cover rounded-lg "
                 />
                 <button
                   type="button"
@@ -139,13 +143,13 @@ const ImageUploader = ({
               </div>
             ))}
             {uploadedImages.map((file, index) => (
-              <div key={`${file.name}-${index}`} className="relative group">
+              <div key={`${file.name}-${index}`} className="relative group w-full h-full flex items-center justify-center">
                 <Image
                   width={140}
                   height={140}
                   src={URL.createObjectURL(file)}
                   alt="Uploaded preview"
-                  className="w-full h-32 object-cover rounded-lg shadow-lg"
+                  className="w-full h-32 object-cover rounded-lg "
                 />
                 <button
                   type="button"
