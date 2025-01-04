@@ -21,7 +21,8 @@ const buttonVariants = cva(
         search: "text-primary bg-secondary text-white",
       },
       size: {
-        default: "h-12 px-4 py-2",
+        // default: "px-8 py-2",
+        default: "h-10 px-4 py-2",
         flat_main: "px-8 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",

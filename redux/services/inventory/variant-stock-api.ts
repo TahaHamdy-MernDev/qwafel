@@ -5,7 +5,7 @@ import {
   IUpdateVariantStockMutationParams,
   IVariantStock,
   IVariantStockResponse,
-} from "@/types/variant-stock-types";
+} from "@/types/variants-types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { IWarehouse } from "./warehouses-api";
 
@@ -17,7 +17,7 @@ export const variantStockApi = createApi({
     return {
       getVariantStock: build.query<IVariantStockResponse, IParams>({
         query: ({ country, page = 1 }) => ({
-          url: `${country}/variant-stock/all`,
+          url: `${country}/variant/all`,
           method: "GET",
           params: { page },
         }),
@@ -34,7 +34,7 @@ export const variantStockApi = createApi({
         ICreateVariantStockMutationParams
       >({
         query: ({ country, payload }) => ({
-          url: `${country}/variant-stock`,
+          url: `${country}/variant`,
           method: "POST",
           body: payload,
         }),
@@ -45,7 +45,7 @@ export const variantStockApi = createApi({
         IUpdateVariantStockMutationParams
       >({
         query: ({ country, id, payload }) => ({
-          url: `${country}/variant-stock/${id}/update`,
+          url: `${country}/variant/${id}/update`,
           method: "PUT",
           body: payload,
         }),
@@ -55,7 +55,7 @@ export const variantStockApi = createApi({
       }),
       deleteVariantStock: build.mutation<void, IParams>({
         query: ({ country, id }) => ({
-          url: `${country}/variant-stock/${id}/delete`,
+          url: `${country}/variant/${id}/delete`,
           method: "DELETE",
         }),
         invalidatesTags: (result, error, { id }) => [
@@ -65,3 +65,10 @@ export const variantStockApi = createApi({
     };
   },
 });
+
+export const {
+  useGetVariantStockQuery,
+  useCreateVariantStockMutation,
+  useUpdateVariantStockMutation,
+  useDeleteVariantStockMutation,
+} = variantStockApi;

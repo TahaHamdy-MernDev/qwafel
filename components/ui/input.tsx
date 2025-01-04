@@ -73,7 +73,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               ltrPadding,
               hasError
                 ? "border-red-600"
-                : " focus:border-input-focus  focus-visible:border-primary",
+                : "h-10 focus:border-input-focus  focus-visible:border-primary",
               className,
               "text-black placeholder:text-black/50"
             )}
@@ -102,16 +102,18 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </div>
           )}
         </div>
-        <Accordion
-          type="single"
-          collapsible
-          value={isAccordionOpen ? label : ""}
-          onValueChange={(value) => setIsAccordionOpen(Boolean(value))}
-        >
-          <AccordionItem value={label as string} className="border-none">
-            <AccordionContent>{errorMessage}</AccordionContent>
-          </AccordionItem>
-        </Accordion>
+        {errorMessage && (
+          <Accordion
+            type="single"
+            collapsible
+            value={isAccordionOpen ? label : ""}
+            onValueChange={(value) => setIsAccordionOpen(Boolean(value))}
+          >
+            <AccordionItem value={label as string} className="border-none">
+              <AccordionContent>{errorMessage}</AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        )}
       </div>
     );
   }

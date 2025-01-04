@@ -12,7 +12,8 @@ interface IProduct {
   thumbnail: string;
   is_active: boolean;
   images: string[];
-  meta_description: string;
+  meta_description_en: string;
+  meta_description_ar: string;
 }
 
 interface CreateProductPayload {
@@ -25,7 +26,8 @@ interface CreateProductPayload {
   external_url: string;
   thumbnail: File[];
   images: File[];
-  meta_description: string;
+  meta_description_ar: string;
+  meta_description_en: string;
   createdAt?: string;
   [key: string]: unknown;
 }
@@ -77,7 +79,8 @@ export const productApi = createApi({
         formData.append("categoryId", String(payload.categoryId));
 
         formData.append("external_url", payload.external_url);
-        formData.append("meta_description", payload.meta_description);
+        formData.append("meta_description_ar", payload.meta_description_ar);
+        formData.append("meta_description_en", payload.meta_description_en);
         formData.append("thumbnail", payload.thumbnail[0]);
         payload.images.forEach((image) => {
           formData.append(`images`, image);
@@ -103,9 +106,11 @@ export const productApi = createApi({
         if (body.categoryId) formData.append("categoryId", body.categoryId);
         if (body.external_url)
           formData.append("external_url", body.external_url);
-        if (body.meta_description)
-          formData.append("meta_description", body.meta_description);
+        if (body.meta_description_ar)
+          formData.append("meta_description_ar", body.meta_description_ar);
+        if (body.meta_description_en)
         if (body.thumbnail) formData.append("thumbnail", body.thumbnail[0]);
+        formData.append("meta_description_en", body.meta_description_en);
         if (body.images) {
           body.images.forEach((image, index) => {
             formData.append(`images[${index}]`, image);

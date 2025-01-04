@@ -25,14 +25,20 @@
         "save_changes": "حفظ التغييرات",
         "cancel": "إلغاء",
         "search": "بحث",
+        "delete": "حذف",
         "update": "تحديث",
         "reset": "حذف",
+        "delete_item": "{item} حذف",
         "confirm": "تاكيد",
         "disagree": "غير موافق",
         "in_ar": "{name} بالعربية",
         "in_en": "{name} بالانجليزية",
         "ar": "العربية",
-        "en": "الانجليزية"
+        "not_available": "لا يوجد",
+        "en": "الانجليزية",
+        "created_successfully": "تم الانشاء بنجاح",
+        "updated_successfully": "تم التحديث بنجاح",
+        "deleted_successfully": "تم الحذف بنجاح"
     },
     "res_status": {
         "created_successfully": "تم الانشاء بنجاح",
@@ -169,7 +175,7 @@
             "exclusive_products": "منتجات حصرية"
         },
         "inventory": {
-            "inventory": "المخزون",
+            "inventory": "الاستوك",
             "warehouses": "المخازن",
             "product_stock": "مخزون المنتجات",
             "variant_stock": "مخزون المتغيرات"
@@ -188,6 +194,13 @@
         }
     },
     "Products": {
+        "variants": " المتغيرات {count}",
+        "add_new_variant": "اضافة متغير",
+        "variant_name": "الاسم",
+        "variant_price": "السعر",
+        "variant_quantity": "الكمية",
+        "variant_color": "اللون",
+        "variant_size": "المقاس",
         "meta_description": " وصف قصير للموقع يساعد محركات البحث في التعرف على محتوى الصفحة وتحسين ظهورها في نتائج البحث.",
         "product_img": "صورة المنتج",
         "add_product": "إضافة منتج",
@@ -322,6 +335,46 @@
             "product": "المنتج",
             "price": "السعر",
             "current_stock": "الاستوك الحالي"
+        },
+        "Variants": {
+            "title": "مخزن المتغيرات",
+            "add_new_variant": "إضافة متغير جديد",
+            "price": "السعر",
+            "quantity": "الكمية",
+            "warehouse": "المخزن",
+            "date":"التاريخ",
+            "size": "المقاس",
+            "actions":"اجراءات",
+            "select_warehouse": "اختر المخزن",
+            "category": "الفئة",
+            "select_category": "اختر الفئة",
+            "color": "اللون",
+            "select_color": "اختر اللون",
+            "created_successfully": "تم إنشاء المتغير بنجاح!"
+        },
+        "Stock_logs": {
+            "add_new_stock_log": "اضافة حركة استوك",
+            "title": "حركة الاستوك",
+            "edit_stock_log": "تعديل حركة الاستوك",
+            "date": "التاريخ",
+            "edit": "تعديل",
+            "actions": "اجراءات",
+            "thumbnail": "الصورة المصغرة ",
+            "delete": "حذف",
+            "delete_stock_log": "حذف حركة الاستوك",
+            "delete_confirmation": "هل أنت متأكد أنك تريد حذف هذه الحركة؟��",
+            "edit_log": "تعديل حركة الاستوك",
+            "quantity": "الكمية",
+            "product": "المنتج",
+            "price": "السعر",
+            "status": "الحاله",
+            "new": "بضاعة جديده",
+            "sell": "بيع",
+            "warehouse": "المخزن",
+            "supplier": "المورد",
+            "damaged": "تالف",
+            "current_stock": "الاستوك الحالي",
+            "variant": "المتغير"
         }
     },
     "status": {

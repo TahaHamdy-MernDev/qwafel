@@ -20,7 +20,7 @@ export default function DeleteSupplier({
   supplier,
 }: Readonly<{ supplier: ISupplier }>) {
   const country = useCountry();
-const t = useTranslations("Pages.Purchases");
+  const t = useTranslations("Pages.Purchases");
   const global = useTranslations("global");
   const res_status = useTranslations("res_status");
   const { toast } = useToast();
@@ -44,7 +44,9 @@ const t = useTranslations("Pages.Purchases");
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Trash2 className="cursor-pointer text-destructive hover:text-red-900 transition-all duration-200" />
+        <Button variant={"link"}>
+          <Trash2 className="cursor-pointer text-destructive hover:text-red-900 transition-all duration-200" />
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

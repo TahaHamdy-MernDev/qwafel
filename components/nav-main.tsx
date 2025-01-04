@@ -73,7 +73,7 @@ export function NavMain({
               <SidebarMenuButton
                 tooltip={item.title}
                 className={cn(
-                  "h-12 hover:bg-[#FFF0ED]",
+                  "h-10 hover:bg-[#FFF0ED]",
                   item.isActive && "!bg-[#FFF0ED]"
                 )}
               >
@@ -103,7 +103,7 @@ export function NavMain({
             asChild
             tooltip={item.title}
             className={cn(
-              "h-12 hover:bg-gray-200",
+              "h-10 hover:bg-gray-200",
               item.isActive && "!bg-[#FFF0ED] text-[#F25D50]"
             )}
           >

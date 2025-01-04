@@ -68,7 +68,9 @@ export default function EditSupplier({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Edit2 className="cursor-pointer" />
+        <Button variant="link">
+        <Edit2 className="cursor-pointer"  />
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

@@ -4,3 +4,9 @@ export interface IParams{
     page?: number;
     lang?: string;
 }
+export interface IQueryParams{
+    id?: number;
+    country?: string;
+    page?: number;
+    lang?: string;
+}

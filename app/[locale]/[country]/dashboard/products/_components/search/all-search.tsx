@@ -60,17 +60,17 @@ const AllSearch: React.FC = () => {
             {...register("product_name")}
           />
          
-          <Input
+          {/* <Input
             type="text"
             placeholder={t("seller_commission")}
             {...register("seller_commission")}
-          />
-          <Input
+          /> */}
+          {/* <Input
             type="text"
             placeholder={t("system_commission")}
             {...register("system_commission")}
           />
-         
+          */}
           <div className=" w-full flex max-w-lg items-start gap-2">
             <Button type="submit" className=" w-full">
               {tSearch("search")}

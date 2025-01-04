@@ -3,6 +3,16 @@
 import RichTextEditor from "@/components/rich-text-editor";
 import { Button } from "@/components/ui/button";
 import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   Form,
   FormControl,
   FormField,
@@ -27,14 +37,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { getLangDir } from "rtl-detect";
-import { Separator } from "@/components/ui/separator";
 import { useGetCategoriesQuery } from "@/redux/services/products/category-api";
 import { useCreateProductMutation } from "@/redux/services/products/products-api";
 import useCountry from "@/hooks/use-country";
 import { useToast } from "@/hooks/use-toast";
-import Link from "@/components/reusable/Link";
-import { Card } from "@/components/ui/card";
-const formSchema = z.object({
+
+import { IVariant } from "@/types/variants-types";
+import VariantsAccordion from "./variants";
+
+export const formSchema = z.object({
   title_ar: z.string(),
   title_en: z.string(),
   description_ar: z.string().min(1).max(99999).trim(),
@@ -47,16 +58,39 @@ const formSchema = z.object({
   meta_description_ar: z.string(),
   meta_description_en: z.string(),
 });
+interface IVariant {
+  id: string | number; // Ensure this is unique
+  price: number;
+  quantity: number;
+  warehouseId?: number;
+  warehouse?: string;
+  sizeId?: number;
+  size?: string;
+  colorId?: number;
+  color?: string;
+}
+
+export interface VariantsAccordionProps {
+  addVariant: (variant: IVariant) => void;
+  variants: IVariant[];
+  deleteVariant: (index: number) => void;
+  global: ReturnType<typeof useTranslations>;
+  t: ReturnType<typeof useTranslations>;
+  tVar: ReturnType<typeof useTranslations>;
+}
+
 export default function Page() {
-  const { toast } = useToast();
-  const { data } = useGetCategoriesQuery({ page: 1 });
-  const [createProduct, { isLoading }] = useCreateProductMutation();
   const res_status = useTranslations("res_status");
   const status = useTranslations("status");
   const t = useTranslations("Products");
+  const tVar = useTranslations("Pages.Variants");
   const global = useTranslations("global");
   const locale = useLocale();
   const dir = getLangDir(locale);
+  const country = useCountry();
+  const { toast } = useToast();
+  const { data } = useGetCategoriesQuery({ page: 1 });
+  const [createProduct, { isLoading }] = useCreateProductMutation();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -75,38 +109,47 @@ export default function Page() {
       thumbnail: undefined,
     },
   });
+
   const [uploadedImages, setUploadedImages] = useState<File[]>([]);
   const [uploadedThumbnail, setUploadedThumbnail] = useState<File[]>([]);
-  const [createdProduct, setCreatedProducts] = useState({
+  const [createdProduct, setCreatedProduct] = useState<{
+    show: boolean;
+    id: string | null;
+  }>({
     show: false,
     id: null,
   });
+  const [variants, setVariants] = useState<IVariant[]>([]);
+
   const handleImagesChange = (files: File[]) => {
     setUploadedImages(files);
   };
+
   const handleThumbnailChange = (files: File[]) => {
     setUploadedThumbnail(files);
   };
-  const country = useCountry();
+
+  const addVariant = (newVariant: IVariant) => {
+    setVariants((prev) => [...prev, newVariant]);
+  };
+
+  const deleteVariant = (index: number) => {
+    setVariants((prev) => prev.filter((_, i) => i !== index));
+  };
+
   const onSubmit = async (formData: z.infer<typeof formSchema>) => {
     formData.images = uploadedImages;
     formData.thumbnail = uploadedThumbnail;
-    console.log(formData);
+
     const payload = { ...formData };
-    await createProduct({
-      payload,
-      params: { country },
-    })
+    await createProduct({ payload, params: { country } })
       .unwrap()
       .then((res) => {
-        toast({
-          description: res_status("created_successfully"),
-        });
+        toast({ description: res_status("created_successfully") });
+        setCreatedProduct({ show: true, id: res.data.id });
         form.reset();
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch(console.error);
   };
 
   return (
@@ -237,8 +280,7 @@ export default function Page() {
                 </TabsContent>
               </Tabs>
               <div className="flex items-center justify-start flex-col  gap-4 col-span-1 w-full bg-white py-4 px-2 rounded-md">
-         
-               <FormField
+                <FormField
                   control={form.control}
                   name="categoryId"
                   render={({ field }) => (
@@ -254,10 +296,10 @@ export default function Page() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent dir={dir}>
-                          {data?.data?.map((cat) => {
+                          {data?.data?.map((cat, idx) => {
                             return (
                               <SelectItem
-                                key={cat.id}
+                                key={idx + 1 - 1}
                                 value={cat.id.toString()}
                               >
                                 {cat[`name_${locale}`] as string}
@@ -271,8 +313,6 @@ export default function Page() {
                   )}
                 />
 
-        
-             
                 <FormField
                   name="is_active"
                   control={form.control}
@@ -343,15 +383,19 @@ export default function Page() {
                 />
               </div>
             </div>
+            <VariantsAccordion
+              addVariant={addVariant}
+              variants={variants}
+              deleteVariant={deleteVariant}
+              // updateVariant={editVariant}
+              global={global}
+              t={t}
+              tVar={tVar}
+            />
 
             <Button type="submit" isLoading={isLoading}>
               {t("create")}
             </Button>
-            {/* <Button variant="outline">
-              <Link href={`/products/${createdProduct.id}`} target="_">
-                {t("show_product")}
-              </Link>
-            </Button> */}
           </form>
         </Form>
       </div>

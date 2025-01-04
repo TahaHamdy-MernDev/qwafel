@@ -117,7 +117,7 @@ const ImageUploader = ({
             onClick={openFilePicker}
             className="flex flex-col items-center justify-center text-gray-500 w-full min-h-[10rem]"
           >
-            <Images className="w-12 h-12 mb-2" />
+            <Images className="w-12 h-10 mb-2" />
             <p>Click to upload images</p>
           </button>
         ) : (
@@ -167,7 +167,7 @@ const ImageUploader = ({
                 className="cursor-pointer p-4 border-2 border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 transition"
               >
                 <div className="flex flex-col items-center justify-center text-gray-500">
-                  <Images className="w-12 h-12 mb-2" />
+                  <Images className="w-12 h-10 mb-2" />
                   <p>Add more</p>
                 </div>
               </button>

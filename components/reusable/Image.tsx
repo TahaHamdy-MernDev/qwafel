@@ -1,7 +1,7 @@
 "use client";
-import { cn } from "@/lib/utils";
+import React, { useState } from "react";
 import NextImage from "next/image";
-import React from "react";
+import { cn } from "@/lib/utils";
 
 interface ImageProps {
   className?: string;
@@ -11,7 +11,7 @@ interface ImageProps {
   alt: string;
 }
 
-const defaultFallbackImage = "/images/broken.webp";
+const defaultFallbackImage = "/images/no-image.png";
 
 const Image: React.FC<ImageProps> = ({
   className,
@@ -20,15 +20,23 @@ const Image: React.FC<ImageProps> = ({
   height,
   alt,
 }) => {
-  src = src && src !== "" ? src : defaultFallbackImage;
+  const [currentSrc, setCurrentSrc] = useState<string>(
+    src && src !== "" ? src : defaultFallbackImage
+  );
+
+  const handleError = () => {
+    setCurrentSrc(defaultFallbackImage);
+  };
+
   return (
     <NextImage
-      src={src}
+      src={currentSrc}
       width={width}
       height={height}
       alt={alt}
       priority
       className={cn("h-auto w-auto", className)}
+      onError={handleError}
     />
   );
 };

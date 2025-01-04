@@ -21,6 +21,9 @@ const nextConfig = {
       {
         protocol: "http",
         hostname: "143.110.230.81",
+      },{
+        protocol: "https",
+        hostname: "picsum.photos"
       }
     ],
   },
