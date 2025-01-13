@@ -1,23 +1,12 @@
 "use client";
 import { AppSidebar } from "@/components/app-sidebar";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Separator } from "@/components/ui/separator";
-import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { useLocale } from "next-intl";
-import { getLangDir } from "rtl-detect";
-import DynamicBreadcrumb from "../breadcrumb";
-import { NavUser } from "../nav-user";
+import { getLangDir } from "rtl-detect"; 
 import ChangeLocalization from "../ChangeLocalization";
 import ChangeCountry from "../change-country";
 import { useEffect, useState } from "react";
@@ -25,13 +14,13 @@ import { getAuthToken } from "@/lib/cookies";
 import { useRouter } from "@/i18n/routing";
 import { useAppDispatch } from "@/redux/hooks";
 import { setToken } from "@/redux/slices/auth-slice";
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-};
+// const data = {
+//   user: {
+//     name: "shadcn",
+//     email: "m@example.com",
+//     avatar: "/avatars/shadcn.jpg",
+//   },
+// };
 export function DashboardLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {

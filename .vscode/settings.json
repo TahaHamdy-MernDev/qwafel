@@ -1,5 +1,9 @@
 {
     "cSpell.words": [
         "Varaints"
+    ],
+    "i18n-ally.localesPaths": [
+        "i18n",
+        "messages"
     ]
 }

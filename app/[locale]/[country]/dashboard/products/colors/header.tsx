@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Typography from "@/components/reusable/typography";
 import { Button } from "@/components/ui/button";
 import {
@@ -38,6 +38,7 @@ const Header: React.FC = () => {
   const global = useTranslations("global");
   const res_status = useTranslations("res_status");
   const t = useTranslations("Pages.Colors");
+  const [open, setOpen] = useState(false);
   const { toast } = useToast();
   const [createColor, { isLoading }] = useCreateColorMutation();
   const createForm = useForm<formInputs>({
@@ -53,6 +54,7 @@ const Header: React.FC = () => {
         toast({
           description: res_status("created_successfully"),
         });
+        setOpen(false);
         createForm.reset();
       });
   };
@@ -61,7 +63,7 @@ const Header: React.FC = () => {
       <Typography as={"h1"} variant={"title"}>
         {t("Colors")}
       </Typography>
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button size={"flat_main"}>{global("add_new")}</Button>
         </DialogTrigger>
@@ -95,7 +97,10 @@ const Header: React.FC = () => {
                 control={createForm.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel> {global("in_en", { name: t("name") })}</FormLabel>
+                    <FormLabel>
+                      {" "}
+                      {global("in_en", { name: t("name") })}
+                    </FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
@@ -108,7 +113,12 @@ const Header: React.FC = () => {
                   {global("create")}
                 </Button>
                 <DialogClose asChild>
-                  <Button type="button" variant="outline" disabled={isLoading} onClick={()=>createForm.reset()}>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    disabled={isLoading}
+                    onClick={() => createForm.reset()}
+                  >
                     {global("cancel")}
                   </Button>
                 </DialogClose>

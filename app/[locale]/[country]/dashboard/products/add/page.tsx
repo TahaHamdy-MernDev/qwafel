@@ -3,14 +3,6 @@
 import RichTextEditor from "@/components/rich-text-editor";
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   Form,
@@ -41,7 +33,6 @@ import { useGetCategoriesQuery } from "@/redux/services/products/category-api";
 import { useCreateProductMutation } from "@/redux/services/products/products-api";
 import useCountry from "@/hooks/use-country";
 import { useToast } from "@/hooks/use-toast";
-
 import { IVariant } from "@/types/variants-types";
 import VariantsAccordion from "./variants";
 
@@ -58,17 +49,7 @@ export const formSchema = z.object({
   meta_description_ar: z.string(),
   meta_description_en: z.string(),
 });
-interface IVariant {
-  id: string | number; // Ensure this is unique
-  price: number;
-  quantity: number;
-  warehouseId?: number;
-  warehouse?: string;
-  sizeId?: number;
-  size?: string;
-  colorId?: number;
-  color?: string;
-}
+
 
 export interface VariantsAccordionProps {
   addVariant: (variant: IVariant) => void;
@@ -112,7 +93,7 @@ export default function Page() {
 
   const [uploadedImages, setUploadedImages] = useState<File[]>([]);
   const [uploadedThumbnail, setUploadedThumbnail] = useState<File[]>([]);
-  const [createdProduct, setCreatedProduct] = useState<{
+  const [ setCreatedProduct] = useState<{
     show: boolean;
     id: string | null;
   }>({
@@ -302,7 +283,7 @@ export default function Page() {
                                 key={idx + 1 - 1}
                                 value={cat.id.toString()}
                               >
-                                {cat[`name_${locale}`] as string}
+                                {cat[`name_${locale}`] as any}
                               </SelectItem>
                             );
                           })}

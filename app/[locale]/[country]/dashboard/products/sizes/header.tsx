@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, {  useState } from "react";
 import Typography from "@/components/reusable/typography";
 import { Button } from "@/components/ui/button";
 import {
@@ -38,6 +38,7 @@ const Header: React.FC = () => {
   const { toast } = useToast();
   const global = useTranslations("global");
   const t = useTranslations("Pages.Sizes");
+  const [open, setOpen] = useState(false);
   const createForm = useForm<formInputs>({
     resolver: zodResolver(createSizeForm),
     mode: "onChange",
@@ -52,6 +53,7 @@ const Header: React.FC = () => {
         toast({
           description: "Successfully created the size!",
         });
+        setOpen(false);
       })
       .catch((err) => {
         toast({
@@ -65,7 +67,7 @@ const Header: React.FC = () => {
       <Typography as={"h1"} variant={"title"}>
         {t("sizes")}
       </Typography>
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button size={"flat_main"}>{global("add_new")}</Button>
         </DialogTrigger>

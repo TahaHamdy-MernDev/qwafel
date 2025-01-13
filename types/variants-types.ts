@@ -1,9 +1,13 @@
 export interface IVariant {
+  id: string | number; // Ensure this is unique
   price: number;
   quantity: number;
-  warehouseId: string;
-  sizeId: string;
-  colorId: string;
+  warehouseId?: number;
+  warehouse?: string;
+  sizeId?: number;
+  size?: string;
+  colorId?: number;
+  color?: string;
 }
 // export interface IVariantStock {
 //   id?: number;

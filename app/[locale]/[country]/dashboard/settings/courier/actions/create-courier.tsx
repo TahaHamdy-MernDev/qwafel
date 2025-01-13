@@ -23,29 +23,41 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { useCreateWarehouseMutation } from "@/redux/services/inventory/warehouses-api";
+import { useCreateCourierMutation } from "@/redux/services/settings/courier-api";
 import useCountry from "@/hooks/use-country";
 import { useTranslations } from "next-intl";
 
-const createSize = z.object({
-  name: z.string().min(1).max(20),
+// Validation schema with additional fields
+const createCourierSchema = z.object({
+  name: z.string().min(1, "Name is required").max(20, "Name is too long"),
+  our_api_key: z.string().min(1, "API Key is required"),
+  courier_api_key: z.string().min(1, "Courier API Key is required"),
 });
-type formInputs = z.infer<typeof createSize>;
-export default function CreateWarehouse() {
-  const t = useTranslations("Pages.Inventory");
+
+// Form input type
+type FormInputs = z.infer<typeof createCourierSchema>;
+
+export default function CreateCourier() {
+  const t = useTranslations("Pages.Settings");
   const { toast } = useToast();
   const country = useCountry();
-  const [createWarehouse, { isLoading }] = useCreateWarehouseMutation();
+  const [createCourier, { isLoading }] = useCreateCourierMutation();
   const global = useTranslations("global");
   const [open, setOpen] = useState(false);
   const res_status = useTranslations("res_status");
-  const createForm = useForm<formInputs>({
-    resolver: zodResolver(createSize),
+
+  const createForm = useForm<FormInputs>({
+    resolver: zodResolver(createCourierSchema),
     mode: "onChange",
-    defaultValues: { name: "" },
+    defaultValues: {
+      name: "",
+      our_api_key: "",
+      courier_api_key: "", 
+    },
   });
-  const onSubmitCreate = async (data: formInputs) => {
-    await createWarehouse({
+
+  const onSubmitCreate = async (data: FormInputs) => {
+    await createCourier({
       payload: data,
       country: country ?? undefined,
     })
@@ -55,22 +67,25 @@ export default function CreateWarehouse() {
           description: res_status("created_successfully"),
         });
         setOpen(false);
-
       })
       .catch((err) => {
-        console.log(err);
-        toast({ description: err.data.message, variant: "destructive" });
+        console.error(err);
+        toast({
+          description: err?.data?.message || "An error occurred",
+          variant: "destructive",
+        });
       });
     createForm.reset();
   };
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size={"flat_main"}>{global("add_new")}</Button>
+        <Button size="flat_main">{global("add_new")}</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t("add_new_warehouse")}</DialogTitle>
+          <DialogTitle>{t("add_new_courier")}</DialogTitle>
         </DialogHeader>
         <DialogDescription></DialogDescription>
         <Form {...createForm}>
@@ -78,12 +93,13 @@ export default function CreateWarehouse() {
             onSubmit={createForm.handleSubmit(onSubmitCreate)}
             className="space-y-4"
           >
+            {/* Name Field */}
             <FormField
               name="name"
               control={createForm.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t("name")}</FormLabel>
+                  <FormLabel className=" pb-2">{t("name")}</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -91,6 +107,38 @@ export default function CreateWarehouse() {
                 </FormItem>
               )}
             />
+
+            {/* Our API Key Field */}
+            <FormField
+              name="our_api_key"
+              control={createForm.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("our_api_key")}</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Courier API Key Field */}
+            <FormField
+              name="courier_api_key"
+              control={createForm.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("courier_api_key")}</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+ 
+
             <DialogFooter>
               <Button type="submit" isLoading={isLoading}>
                 {global("create")}

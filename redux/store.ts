@@ -7,6 +7,7 @@ import { colorApi } from "./services/products/colors-api";
 import { categoryApi } from "./services/products/category-api";
 import { productApi } from "./services/products/products-api";
 import { warehousesApi } from "./services/inventory/warehouses-api";
+import { couriersApi } from "./services/settings/courier-api";
 import { supplierApi } from "./services/purchases/suppliers-api";
 import { stockLogsApi } from "./services/purchases/stock-logs-api";
 import { variantStockApi } from "./services/inventory/variant-stock-api";
@@ -20,6 +21,7 @@ export const makeStore = (preloadedState = {}) =>
       [categoryApi.reducerPath]: categoryApi.reducer,
       [productApi.reducerPath]: productApi.reducer,
       [warehousesApi.reducerPath]: warehousesApi.reducer,
+      [couriersApi.reducerPath]: couriersApi.reducer,
       [supplierApi.reducerPath]: supplierApi.reducer,
       [stockLogsApi.reducerPath]: stockLogsApi.reducer,
       [variantStockApi.reducerPath]: variantStockApi.reducer,
@@ -33,6 +35,7 @@ export const makeStore = (preloadedState = {}) =>
         categoryApi.middleware,
         productApi.middleware,
         warehousesApi.middleware,
+        couriersApi.middleware,
         supplierApi.middleware,
         stockLogsApi.middleware,
         variantStockApi.middleware

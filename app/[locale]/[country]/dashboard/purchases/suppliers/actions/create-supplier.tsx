@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -42,6 +42,7 @@ export default function CreateSupplier() {
   const t = useTranslations("Pages.Purchases");
   const global = useTranslations("global");
   const res_status = useTranslations("res_status");
+  const [open, setOpen] = useState(false);
   const country = useCountry();
   const { toast } = useToast();
   const [createSupplier, { isLoading }] = useCreateSupplierMutation();
@@ -60,6 +61,7 @@ export default function CreateSupplier() {
       .unwrap()
       .then(() => {
         toast({ description: res_status("created_successfully") });
+        setOpen(false);
       })
       .catch((err) => {
         console.log(err);
@@ -69,7 +71,7 @@ export default function CreateSupplier() {
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button>{global("add_new")}</Button>
       </DialogTrigger>

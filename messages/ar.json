@@ -185,6 +185,13 @@
             "suppliers": "الموردين",
             "stock_movement": "حركة المخزون"
         },
+        "settings": {
+            "settings": "الاعدادت",
+            "couriers": "الشحن",
+            "courier": "شركة الشحن",
+            "government": "المحافظة",
+            "government_courier": "تسعير شركة الشحن "
+        },
         "finances": {
             "finance": "المالية",
             "withdrawal_requests": "طلبات السحب",
@@ -301,6 +308,21 @@
             "warehouses": "المخازن",
             "add_new_warehouse": "اضافة مخزن جديد",
             "country": "الدوله",
+            "date": "التاريخ",
+            "edit": "تعديل",
+            "actions": "اجراءات",
+            "delete": "حذف"
+        },
+        "Settings": {
+            "delete_courier": "حذف شركة الشحن",
+            "delete_confirmation": "هل أنت متأكد أنك تريد حذف هذا شركة الشحن؟",
+            "edit_courier": "تعديل شركة الشحن",
+            "name": "الاسم", 
+            "couriers": "شركات الشحن",
+            "add_new_courier": "اضافة مخزن جديد",
+            "country": "الدوله", 
+            "our_api_key": "مفتاح API الخاص بنا",
+            "courier_api_key": "مفتاح API لشركة النقل",
             "date": "التاريخ",
             "edit": "تعديل",
             "actions": "اجراءات",

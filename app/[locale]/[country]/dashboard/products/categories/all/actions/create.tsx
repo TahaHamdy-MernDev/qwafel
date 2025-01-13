@@ -45,6 +45,7 @@ export default function CreateCategoryForm() {
   const { toast } = useToast();
   const [createCategory, { isLoading }] = useCreateCategoryMutation();
   const t = useTranslations("Pages.Categories");
+  const [open, setOpen] = useState(false);
   const global = useTranslations("global");
   const res_status = useTranslations("res_status");
   const status = useTranslations("status");
@@ -80,6 +81,7 @@ export default function CreateCategoryForm() {
         });
         createForm.reset();
         handleFileChange([]);
+        setOpen(false);
       })
       .catch((err) => {
         toast({
@@ -89,7 +91,7 @@ export default function CreateCategoryForm() {
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button>{t("add")}</Button>
       </DialogTrigger>

@@ -1,4 +1,4 @@
-import { Boxes, CircleDollarSign, LayoutDashboard } from "lucide-react";
+import { Boxes, CircleDollarSign, LayoutDashboard, Settings } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { AiOutlineProduct } from "react-icons/ai";
 import { GrAnalytics } from "react-icons/gr";
@@ -46,7 +46,7 @@ import { GrAnalytics } from "react-icons/gr";
 //   }
 
 export const sidebarLinks = ({
-  role,
+  // role,
   t,
 }: {
   role: string;
@@ -307,6 +307,21 @@ export const sidebarLinks = ({
           url: "/purchases/stock-logs",
           isVisible: true,
         },
+      ],
+    },
+    {
+      title: t("settings.settings"),
+      url: "/settings",
+      icon: Settings,
+      isActive: false,
+      isVisible: true,
+      items: [
+        {
+          title: t("settings.couriers"),
+          url: "/settings/courier",
+          isVisible: true,
+        },
+      
       ],
     },
     {
